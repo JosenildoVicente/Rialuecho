@@ -1,0 +1,1678 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx">
+<Attr>
+<Pos s="4" l="7" c="1"/>
+</Attr>
+<Set>
+<Id typref="4004769208" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:1:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="8" c="5"/>
+</Attr>
+</Id>
+</Set>
+<Set>
+<Id typref="153963508" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:2:1" value="produto">
+<Attr>
+<Pos s="7" l="9" c="5"/>
+</Attr>
+</Id>
+</Set>
+</Define>
+<Define name="seext"/>
+<Define name="lprp"/>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="inv">
+<Attr>
+<Pos s="9" l="12" c="1"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison initialTag="((carrinhos) : (POW(num_carrinho)))" op=":">
+<Attr>
+<Pos s="1" l="13" c="14"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:1" value="carrinhos">
+<Attr>
+<Pos s="9" l="13" c="5"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="4288184481">
+<Attr>
+<Pos s="3" l="13" c="16"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="13" c="20"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison initialTag="((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))" op=":">
+<Attr>
+<Pos s="1" l="14" c="21"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="14" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+->" typref="3004549286">
+<Attr>
+<Pos s="3" l="14" c="36"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="14" c="23"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="488408591">
+<Attr>
+<Pos s="3" l="14" c="40"/>
+</Attr>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:2:1" value="produto">
+<Attr>
+<Pos s="7" l="14" c="44"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="cst"/>
+<Proof_Obligation>
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((carrinhos) : (POW(num_carrinho)))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="13" c="14"/>
+</Attr>
+<EmptySet typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:4:1:1:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:4:1:1:1:1">
+<Attr>
+<Pos s="9" l="17" c="5"/>
+</Attr>
+</EmptySet>
+<Unary_Exp op="POW" typref="4288184481">
+<Attr>
+<Pos s="3" l="13" c="16"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="13" c="20"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="14" c="21"/>
+</Attr>
+<EmptySet typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:4:1:2:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:4:1:2:1:1">
+<Attr>
+<Pos s="14" l="18" c="8"/>
+</Attr>
+</EmptySet>
+<Binary_Exp op="+->" typref="3004549286">
+<Attr>
+<Pos s="3" l="14" c="36"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="14" c="23"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="488408591">
+<Attr>
+<Pos s="3" l="14" c="40"/>
+</Attr>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:2:1" value="produto">
+<Attr>
+<Pos s="7" l="14" c="44"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>adicionar_carrinho</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="22" c="12"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="22" c="9"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:1:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="22" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="23" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="23" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:2:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="23" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((carrinhos) : (POW(num_carrinho)))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="13" c="14"/>
+</Attr>
+<Binary_Exp op="\/" typref="4004769208" tag=",C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:1:1:1">
+<Attr>
+<Pos s="9" l="25" c="9"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:1:2:1:1" value="carrinhos">
+<Attr>
+<Pos s="9" l="25" c="22"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="4004769208">
+<Attr>
+<Pos s="1" l="25" c="35"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:1:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="25" c="36"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+<Unary_Exp op="POW" typref="4288184481">
+<Attr>
+<Pos s="3" l="13" c="16"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="13" c="20"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="14" c="21"/>
+</Attr>
+<Binary_Exp op="\/" typref="3668205043" tag=",C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:2:1:1">
+<Attr>
+<Pos s="14" l="26" c="12"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:2:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="26" c="29"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="3668205043">
+<Attr>
+<Pos s="1" l="26" c="47"/>
+</Attr>
+<Binary_Exp op="|->" typref="3104648072">
+<Attr>
+<Pos s="3" l="26" c="51"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:2:2:1:2:1:1" value="xx">
+<Attr>
+<Pos s="2" l="26" c="48"/>
+</Attr>
+</Id>
+<EmptySet typref="3817003670" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:3:1:2:2:1:2:1:2">
+<Attr>
+<Pos s="2" l="26" c="55"/>
+</Attr>
+</EmptySet>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="3004549286">
+<Attr>
+<Pos s="3" l="14" c="36"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="14" c="23"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="488408591">
+<Attr>
+<Pos s="3" l="14" c="40"/>
+</Attr>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:2:1" value="produto">
+<Attr>
+<Pos s="7" l="14" c="44"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),(?; 0; 1; 2; 3)" methodList="?" proofState="Unproved"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>dropar_carrinho</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="32" c="12"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="32" c="9"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:1:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="32" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="33" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="33" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:2:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="33" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((carrinhos) : (POW(num_carrinho)))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="13" c="14"/>
+</Attr>
+<Binary_Exp op="-" typref="4004769208" tag=",C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:3:1:2:1:1">
+<Attr>
+<Pos s="9" l="36" c="12"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:3:1:2:2:1:1" value="carrinhos">
+<Attr>
+<Pos s="9" l="36" c="25"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="4004769208">
+<Attr>
+<Pos s="1" l="36" c="37"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:3:1:2:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="36" c="38"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+<Unary_Exp op="POW" typref="4288184481">
+<Attr>
+<Pos s="3" l="13" c="16"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="13" c="20"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="14" c="21"/>
+</Attr>
+<Binary_Exp op="&lt;&lt;|" typref="3668205043" tag=",C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:3:1:1:1:1">
+<Attr>
+<Pos s="14" l="35" c="9"/>
+</Attr>
+<Nary_Exp op="{" typref="4004769208">
+<Attr>
+<Pos s="1" l="35" c="27"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:3:1:1:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="35" c="28"/>
+</Attr>
+</Id>
+</Nary_Exp>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:3:1:1:2:1:2" value="lista_produtos">
+<Attr>
+<Pos s="14" l="35" c="36"/>
+</Attr>
+</Id>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="3004549286">
+<Attr>
+<Pos s="3" l="14" c="36"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="14" c="23"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="488408591">
+<Attr>
+<Pos s="3" l="14" c="40"/>
+</Attr>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:2:1" value="produto">
+<Attr>
+<Pos s="7" l="14" c="44"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>adicionar_produto</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="41" c="14"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:1:1" value="prod">
+<Attr>
+<Pos s="4" l="41" c="9"/>
+</Attr>
+</Id>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:1:2" value="produto">
+<Attr>
+<Pos s="7" l="41" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="42" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="42" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:2:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="42" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="43" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:3:1" value="xx">
+<Attr>
+<Pos s="2" l="43" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:3:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="43" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="44" c="16"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:1" value="prod">
+<Attr>
+<Pos s="4" l="44" c="11"/>
+</Attr>
+</Id>
+<Binary_Exp op="(" typref="153963508">
+<Attr>
+<Pos s="0" l="44" c="33"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="44" c="19"/>
+</Attr>
+</Id>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:2" value="xx">
+<Attr>
+<Pos s="2" l="44" c="34"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="14" c="21"/>
+</Attr>
+<Binary_Exp op="&lt;+" typref="3668205043" tag=",C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:1:1">
+<Attr>
+<Pos s="14" l="46" c="9"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="46" c="27"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="3668205043">
+<Attr>
+<Pos s="1" l="46" c="45"/>
+</Attr>
+<Binary_Exp op="|->" typref="2571078630">
+<Attr>
+<Pos s="3" l="46" c="49"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:1" value="xx">
+<Attr>
+<Pos s="2" l="46" c="46"/>
+</Attr>
+</Id>
+<Binary_Exp op="\/" typref="153963508">
+<Attr>
+<Pos s="2" l="46" c="73"/>
+</Attr>
+<Binary_Exp op="(" typref="153963508">
+<Attr>
+<Pos s="0" l="46" c="68"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="46" c="54"/>
+</Attr>
+</Id>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:2" value="xx">
+<Attr>
+<Pos s="2" l="46" c="69"/>
+</Attr>
+</Id>
+</Binary_Exp>
+<Nary_Exp op="{" typref="153963508">
+<Attr>
+<Pos s="1" l="46" c="76"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:2:1" value="prod">
+<Attr>
+<Pos s="4" l="46" c="77"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="3004549286">
+<Attr>
+<Pos s="3" l="14" c="36"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="14" c="23"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="488408591">
+<Attr>
+<Pos s="3" l="14" c="40"/>
+</Attr>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:2:1" value="produto">
+<Attr>
+<Pos s="7" l="14" c="44"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>remover_produto</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="51" c="13"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:1:1" value="prod">
+<Attr>
+<Pos s="4" l="51" c="9"/>
+</Attr>
+</Id>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:1:2" value="produto">
+<Attr>
+<Pos s="7" l="51" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="52" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="52" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:2:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="52" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="53" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:3:1" value="xx">
+<Attr>
+<Pos s="2" l="53" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:3:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="53" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="54" c="15"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:1" value="prod">
+<Attr>
+<Pos s="4" l="54" c="11"/>
+</Attr>
+</Id>
+<Binary_Exp op="(" typref="153963508">
+<Attr>
+<Pos s="0" l="54" c="31"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="54" c="17"/>
+</Attr>
+</Id>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:2" value="xx">
+<Attr>
+<Pos s="2" l="54" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Local_Hyp num="1">
+<Nary_Pred op="&amp;"/>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Invariant is preserved</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Ref_Hyp num="1"/>
+<Exp_Comparison initialTag="((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))" op=":" goalTag="Invariant is preserved">
+<Attr>
+<Pos s="1" l="14" c="21"/>
+</Attr>
+<Binary_Exp op="&lt;+" typref="3668205043" tag=",C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:1,C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:1:1">
+<Attr>
+<Pos s="14" l="56" c="9"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="56" c="27"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="3668205043">
+<Attr>
+<Pos s="1" l="56" c="45"/>
+</Attr>
+<Binary_Exp op="|->" typref="2571078630">
+<Attr>
+<Pos s="3" l="56" c="49"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:1" value="xx">
+<Attr>
+<Pos s="2" l="56" c="46"/>
+</Attr>
+</Id>
+<Binary_Exp op="-" typref="153963508">
+<Attr>
+<Pos s="1" l="56" c="73"/>
+</Attr>
+<Binary_Exp op="(" typref="153963508">
+<Attr>
+<Pos s="0" l="56" c="68"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="56" c="54"/>
+</Attr>
+</Id>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:2" value="xx">
+<Attr>
+<Pos s="2" l="56" c="69"/>
+</Attr>
+</Id>
+</Binary_Exp>
+<Nary_Exp op="{" typref="153963508">
+<Attr>
+<Pos s="1" l="56" c="75"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:2:1" value="prod">
+<Attr>
+<Pos s="4" l="56" c="76"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+<Binary_Exp op="+->" typref="3004549286">
+<Attr>
+<Pos s="3" l="14" c="36"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="14" c="23"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="488408591">
+<Attr>
+<Pos s="3" l="14" c="40"/>
+</Attr>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:2:2:2:1" value="produto">
+<Attr>
+<Pos s="7" l="14" c="44"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessConstraints</Tag>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Local_Hyp num="1">
+<Exp_Comparison initialTag="((carrinhos) : (POW(num_carrinho)))" op=":">
+<Attr>
+<Pos s="1" l="13" c="14"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:1" value="carrinhos">
+<Attr>
+<Pos s="9" l="13" c="5"/>
+</Attr>
+</Id>
+<Unary_Exp op="POW" typref="4288184481">
+<Attr>
+<Pos s="3" l="13" c="16"/>
+</Attr>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:3:1:1:2:1" value="num_carrinho">
+<Attr>
+<Pos s="12" l="13" c="20"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_adicionar_carrinho</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="22" c="12"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="22" c="9"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:1:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="22" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_adicionar_carrinho</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="22" c="12"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="22" c="9"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:1:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="22" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="23" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="23" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:1:2:1:2:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="23" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_dropar_carrinho</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="32" c="12"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="32" c="9"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:1:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="32" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_dropar_carrinho</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="32" c="12"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:1:1" value="xx">
+<Attr>
+<Pos s="2" l="32" c="9"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:1:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="32" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="33" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="33" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:2:2:1:2:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="33" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_adicionar_produto</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="43" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:3:1" value="xx">
+<Attr>
+<Pos s="2" l="43" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:3:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="43" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="42" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="42" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:2:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="42" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="41" c="14"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:1:1" value="prod">
+<Attr>
+<Pos s="4" l="41" c="9"/>
+</Attr>
+</Id>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:1:2" value="produto">
+<Attr>
+<Pos s="7" l="41" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:2" value="xx">
+<Attr>
+<Pos s="2" l="44" c="34"/>
+</Attr>
+</Id>
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="44" c="19"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),(?; 0; 1; 2; 3)" methodList="?" proofState="Unproved"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="44" c="19"/>
+</Attr>
+</Id>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="44" c="19"/>
+</Attr>
+</Id>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="44" c="19"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_adicionar_produto</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="41" c="14"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:1:1" value="prod">
+<Attr>
+<Pos s="4" l="41" c="9"/>
+</Attr>
+</Id>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:1:2" value="produto">
+<Attr>
+<Pos s="7" l="41" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="42" c="14"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="42" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:2:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="42" c="16"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="43" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:3:1" value="xx">
+<Attr>
+<Pos s="2" l="43" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:3:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="43" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="44" c="16"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:1" value="prod">
+<Attr>
+<Pos s="4" l="44" c="11"/>
+</Attr>
+</Id>
+<Binary_Exp op="(" typref="153963508">
+<Attr>
+<Pos s="0" l="44" c="33"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="44" c="19"/>
+</Attr>
+</Id>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:2:1:4:2:2" value="xx">
+<Attr>
+<Pos s="2" l="44" c="34"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:2" value="xx">
+<Attr>
+<Pos s="2" l="46" c="69"/>
+</Attr>
+</Id>
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="46" c="54"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+<Proof_State passList="Force(0),(?; 0; 1; 2; 3)" methodList="?" proofState="Unproved"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="46" c="54"/>
+</Attr>
+</Id>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="46" c="54"/>
+</Attr>
+</Id>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:3:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="46" c="54"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_remover_produto</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Local_Hyp num="1">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="53" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:3:1" value="xx">
+<Attr>
+<Pos s="2" l="53" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:3:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="53" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="2">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="52" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="52" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:2:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="52" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="51" c="13"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:1:1" value="prod">
+<Attr>
+<Pos s="4" l="51" c="9"/>
+</Attr>
+</Id>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:1:2" value="produto">
+<Attr>
+<Pos s="7" l="51" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Local_Hyp>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:2" value="xx">
+<Attr>
+<Pos s="2" l="54" c="32"/>
+</Attr>
+</Id>
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="54" c="17"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),(?; 0; 1; 2; 3)" methodList="?" proofState="Unproved"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="3"/>
+<Ref_Hyp num="2"/>
+<Ref_Hyp num="1"/>
+</Nary_Pred>
+<Exp_Comparison op=":">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="54" c="17"/>
+</Attr>
+</Id>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="54" c="17"/>
+</Attr>
+</Id>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="54" c="17"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Binary_Pred>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_remover_produto</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="51" c="13"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:1:1" value="prod">
+<Attr>
+<Pos s="4" l="51" c="9"/>
+</Attr>
+</Id>
+<Id typref="153963508" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:1:2" value="produto">
+<Attr>
+<Pos s="7" l="51" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="52" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:2:1" value="xx">
+<Attr>
+<Pos s="2" l="52" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:2:2" value="num_carrinho">
+<Attr>
+<Pos s="12" l="52" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="53" c="13"/>
+</Attr>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:3:1" value="xx">
+<Attr>
+<Pos s="2" l="53" c="11"/>
+</Attr>
+</Id>
+<Id typref="4004769208" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:3:2" value="carrinhos">
+<Attr>
+<Pos s="9" l="53" c="15"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="54" c="15"/>
+</Attr>
+<Id typref="814964815" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:1" value="prod">
+<Attr>
+<Pos s="4" l="54" c="11"/>
+</Attr>
+</Id>
+<Binary_Exp op="(" typref="153963508">
+<Attr>
+<Pos s="0" l="54" c="31"/>
+</Attr>
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="54" c="17"/>
+</Attr>
+</Id>
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:2:1:4:2:2" value="xx">
+<Attr>
+<Pos s="2" l="54" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Id typref="1676006241" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:2" value="xx">
+<Attr>
+<Pos s="2" l="56" c="69"/>
+</Attr>
+</Id>
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="56" c="54"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+</Goal>
+<Proof_State passList="Force(0),(?; 0; 1; 2; 3)" methodList="?" proofState="Unproved"/>
+</Simple_Goal>
+<Simple_Goal>
+<Tag>Well definedness</Tag>
+<Goal>
+<Exp_Comparison op=":">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="56" c="54"/>
+</Attr>
+</Id>
+<Binary_Exp op="+->">
+<Unary_Exp op="dom">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="56" c="54"/>
+</Attr>
+</Id>
+</Unary_Exp>
+<Unary_Exp op="ran">
+<Id typref="3668205043" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:5:4:3:1:2:1:2:1:2:1:1" value="lista_produtos">
+<Attr>
+<Pos s="14" l="56" c="54"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+</Goal>
+<Proof_State passList="Force(0),?" methodList="pr" proofState="Proved(0)"/>
+</Simple_Goal>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="4004769208">
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:1:1:1" value="num_carrinho"/>
+</Unary_Exp>
+</Type>
+<Type id="3668205043">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:2:1:1:1" value="num_carrinho"/>
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:2:1:1:2:1" value="produto"/>
+</Unary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="4288184481">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:3:1:1:1" value="num_carrinho"/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3004549286">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:4:1:1:1:1" value="num_carrinho"/>
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:4:1:1:1:2:1" value="produto"/>
+</Unary_Exp>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="488408591">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:5:1:1:1" value="produto"/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="153963508">
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:6:1:1" value="produto"/>
+</Unary_Exp>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:7:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="1676006241">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:8:1" value="num_carrinho"/>
+</Type>
+<Type id="3104648072">
+<Binary_Exp op="*">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:9:1:1" value="num_carrinho"/>
+<Unary_Exp op="POW">
+<Generic_Type tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:9:1:2:1"/>
+</Unary_Exp>
+</Binary_Exp>
+</Type>
+<Type id="814964815">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:10:1" value="produto"/>
+</Type>
+<Type id="2571078630">
+<Binary_Exp op="*">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:11:1:1" value="num_carrinho"/>
+<Unary_Exp op="POW">
+<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho.bxml:1:6:11:1:2:1" value="produto"/>
+</Unary_Exp>
+</Binary_Exp>
+</Type>
+<Type id="4004769208">
+<Unary_Exp op="POW">
+<Id tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:3:1:1:1" value="num_carrinho"/>
+</Unary_Exp>
+</Type>
+<Type id="153963508">
+<Unary_Exp op="POW">
+<Id tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:3:2:1:1" value="produto"/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

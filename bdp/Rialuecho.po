@@ -1,0 +1,50 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(8) & _f(17) & WellDefinedness_remover_produto.2,(_f(24) => _f(26));
+_f(1) & _f(2) & _f(8) & _f(17) & WellDefinedness_remover_produto.1,(_f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_remover_produto.2,(_f(23) & _f(21) & _f(22) & _f(24) => _f(26));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_remover_produto.1,(_f(23) & _f(21) & _f(22) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & _f(15) & WellDefinedness_adicionar_produto.2,(_f(24) => _f(26));
+_f(1) & _f(2) & _f(8) & _f(15) & WellDefinedness_adicionar_produto.1,(_f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_adicionar_produto.2,(_f(23) & _f(21) & _f(22) & _f(24) => _f(26));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_adicionar_produto.1,(_f(23) & _f(21) & _f(22) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & _f(17) & remover_produto.1,(_f(3) & _f(6) => _f(18));
+_f(1) & _f(2) & _f(8) & _f(15) & adicionar_produto.1,(_f(3) & _f(6) => _f(16));
+_f(1) & _f(2) & _f(8) & _f(12) & dropar_carrinho.2,(_f(3) & _f(6) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(12) & dropar_carrinho.1,(_f(3) & _f(4) => _f(13));
+_f(1) & _f(2) & _f(8) & _f(9) & adicionar_carrinho.2,(_f(3) & _f(6) => _f(11));
+_f(1) & _f(2) & _f(8) & _f(9) & adicionar_carrinho.1,(_f(3) & _f(4) => _f(10));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & produto: FIN(INTEGER) & not(produto = {});
+"Invariant is preserved";
+"Check invariant ((carrinhos) : (POW(num_carrinho)))";
+(({}) : (POW(num_carrinho)));
+"Check invariant ((lista_produtos) : (((num_carrinho) +-> (POW(produto)))))";
+(({}) : (((num_carrinho) +-> (POW(produto)))));
+((carrinhos) : (POW(num_carrinho))) & ((lista_produtos) : (((num_carrinho) +-> (POW(produto)))));
+((xx) : (num_carrinho)) & not(xx : carrinhos);
+((((carrinhos) \/ (({xx})))) : (POW(num_carrinho)));
+((((lista_produtos) \/ (({((xx) |-> ({}))})))) : (((num_carrinho) +-> (POW(produto)))));
+((xx) : (num_carrinho)) & ((xx) : (carrinhos));
+(((carrinhos - ({xx}))) : (POW(num_carrinho)));
+((((({xx})) <<| (lista_produtos))) : (((num_carrinho) +-> (POW(produto)))));
+((prod) : (produto)) & ((xx) : (num_carrinho)) & ((xx) : (carrinhos)) & not(prod : (lista_produtos )(xx));
+((((lista_produtos) <+ (({((xx) |-> ((((lista_produtos )(xx)) \/ (({prod})))))})))) : (((num_carrinho) +-> (POW(produto)))));
+((prod) : (produto)) & ((xx) : (num_carrinho)) & ((xx) : (carrinhos)) & ((prod) : ((lista_produtos )(xx)));
+((((lista_produtos) <+ (({((xx) |-> (((lista_produtos )(xx) - ({prod}))))})))) : (((num_carrinho) +-> (POW(produto)))));
+btrue;
+((carrinhos) : (POW(num_carrinho)));
+((xx) : (num_carrinho));
+((xx) : (carrinhos));
+((prod) : (produto));
+"Well definedness";
+((xx) : (dom(lista_produtos)));
+((lista_produtos) : (((dom(lista_produtos)) +-> (ran(lista_produtos)))))
+END
+&
+THEORY EnumerateX
+END

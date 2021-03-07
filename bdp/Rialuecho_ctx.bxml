@@ -1,0 +1,37 @@
+<Machine name='Rialuecho_ctx' type='abstraction'>
+<Sets>
+<Attr>
+<Pos l='7' c='1' s='4'/>
+</Attr>
+<Set>
+<Id value='num_carrinho' typref='4004769208'>
+<Attr>
+<Pos l='8' c='5' s='12'/>
+</Attr>
+</Id>
+</Set>
+<Set>
+<Id value='produto' typref='153963508'>
+<Attr>
+<Pos l='9' c='5' s='7'/>
+</Attr>
+</Id>
+</Set>
+</Sets>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<TypeInfos>
+<Type id='4004769208'>
+<Unary_Exp op='POW'>
+<Id value='num_carrinho'/>
+</Unary_Exp>
+</Type>
+<Type id='153963508'>
+<Unary_Exp op='POW'>
+<Id value='produto'/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>
