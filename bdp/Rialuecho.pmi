@@ -1,12 +1,14 @@
 ﻿THEORY BalanceX IS
-  Rialuecho,16,0,0,11,0,0,0;
+  Rialuecho,20,0,0,14,0,0,0;
   Initialisation,2,0,0,2,0,0,0;
   WellDefinedness_Precondition_adicionar_produto,2,0,0,1,0,0,0;
+  WellDefinedness_Precondition_comprar,2,0,0,1,0,0,0;
   WellDefinedness_Precondition_remover_produto,2,0,0,1,0,0,0;
   WellDefinedness_adicionar_produto,2,0,0,1,0,0,0;
   WellDefinedness_remover_produto,2,0,0,1,0,0,0;
   adicionar_carrinho,2,0,0,1,0,0,0;
   adicionar_produto,1,0,0,1,0,0,0;
+  comprar,2,0,0,2,0,0,0;
   dropar_carrinho,2,0,0,2,0,0,0;
   remover_produto,1,0,0,1,0,0,0
 END
@@ -20,6 +22,10 @@ THEORY ProofState IS
   Unproved;
   Proved(0);
   Unproved;
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -40,6 +46,10 @@ THEORY MethodList IS
   pr;
   ?;
   pr;
+  ?;
+  pr;
+  pr;
+  pr;
   pr;
   pr;
   pr;
@@ -51,18 +61,22 @@ END
 &
 THEORY PassList IS
   Force(0),?;
-  Force(0),(?;0;1;2;3);
+  Force(0),(?;0);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
+  Force(0),(?;0);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
+  Force(0),(?;0);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),(?;0);
   Force(0),?;
   Force(0),?;
   Force(0),?;
   Force(0),?;
-  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
   Force(0),?;
   Force(0),?;
   Force(0),?

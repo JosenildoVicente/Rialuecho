@@ -1,12 +1,16 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(8) & _f(17) & WellDefinedness_remover_produto.2,(_f(24) => _f(26));
-_f(1) & _f(2) & _f(8) & _f(17) & WellDefinedness_remover_produto.1,(_f(24) => _f(25));
-_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_remover_produto.2,(_f(23) & _f(21) & _f(22) & _f(24) => _f(26));
-_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_remover_produto.1,(_f(23) & _f(21) & _f(22) & _f(24) => _f(25));
-_f(1) & _f(2) & _f(8) & _f(15) & WellDefinedness_adicionar_produto.2,(_f(24) => _f(26));
-_f(1) & _f(2) & _f(8) & _f(15) & WellDefinedness_adicionar_produto.1,(_f(24) => _f(25));
-_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_adicionar_produto.2,(_f(23) & _f(21) & _f(22) & _f(24) => _f(26));
-_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_adicionar_produto.1,(_f(23) & _f(21) & _f(22) & _f(24) => _f(25));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_comprar.2,(_f(22) & _f(23) & _f(25) => _f(27));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_comprar.1,(_f(22) & _f(23) & _f(25) => _f(26));
+_f(1) & _f(2) & _f(8) & _f(17) & WellDefinedness_remover_produto.2,(_f(25) => _f(27));
+_f(1) & _f(2) & _f(8) & _f(17) & WellDefinedness_remover_produto.1,(_f(25) => _f(26));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_remover_produto.2,(_f(24) & _f(22) & _f(23) & _f(25) => _f(27));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_remover_produto.1,(_f(24) & _f(22) & _f(23) & _f(25) => _f(26));
+_f(1) & _f(2) & _f(8) & _f(15) & WellDefinedness_adicionar_produto.2,(_f(25) => _f(27));
+_f(1) & _f(2) & _f(8) & _f(15) & WellDefinedness_adicionar_produto.1,(_f(25) => _f(26));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_adicionar_produto.2,(_f(24) & _f(22) & _f(23) & _f(25) => _f(27));
+_f(1) & _f(2) & _f(8) & WellDefinedness_Precondition_adicionar_produto.1,(_f(24) & _f(22) & _f(23) & _f(25) => _f(26));
+_f(1) & _f(2) & _f(8) & _f(19) & comprar.2,(_f(3) & _f(6) => _f(14));
+_f(1) & _f(2) & _f(8) & _f(19) & comprar.1,(_f(3) & _f(4) => _f(13));
 _f(1) & _f(2) & _f(8) & _f(17) & remover_produto.1,(_f(3) & _f(6) => _f(18));
 _f(1) & _f(2) & _f(8) & _f(15) & adicionar_produto.1,(_f(3) & _f(6) => _f(16));
 _f(1) & _f(2) & _f(8) & _f(12) & dropar_carrinho.2,(_f(3) & _f(6) => _f(14));
@@ -36,6 +40,7 @@ num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & produto: FIN(INTEGER) & no
 ((((lista_produtos) <+ (({((xx) |-> ((((lista_produtos )(xx)) \/ (({prod})))))})))) : (((num_carrinho) +-> (POW(produto)))));
 ((prod) : (produto)) & ((xx) : (num_carrinho)) & ((xx) : (carrinhos)) & ((prod) : ((lista_produtos )(xx)));
 ((((lista_produtos) <+ (({((xx) |-> (((lista_produtos )(xx) - ({prod}))))})))) : (((num_carrinho) +-> (POW(produto)))));
+((xx) : (num_carrinho)) & ((xx) : (carrinhos)) & not((lista_produtos )(xx) = {});
 btrue;
 ((carrinhos) : (POW(num_carrinho)));
 ((xx) : (num_carrinho));

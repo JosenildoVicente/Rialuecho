@@ -95,29 +95,32 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Rialuecho))==(adicionar_carrinho,dropar_carrinho,adicionar_produto,remover_produto);
-  List_Operations(Machine(Rialuecho))==(adicionar_carrinho,dropar_carrinho,adicionar_produto,remover_produto)
+  Internal_List_Operations(Machine(Rialuecho))==(adicionar_carrinho,dropar_carrinho,adicionar_produto,remover_produto,comprar);
+  List_Operations(Machine(Rialuecho))==(adicionar_carrinho,dropar_carrinho,adicionar_produto,remover_produto,comprar)
 END
 &
 THEORY ListInputX IS
   List_Input(Machine(Rialuecho),adicionar_carrinho)==(xx);
   List_Input(Machine(Rialuecho),dropar_carrinho)==(xx);
   List_Input(Machine(Rialuecho),adicionar_produto)==(prod,xx);
-  List_Input(Machine(Rialuecho),remover_produto)==(prod,xx)
+  List_Input(Machine(Rialuecho),remover_produto)==(prod,xx);
+  List_Input(Machine(Rialuecho),comprar)==(xx)
 END
 &
 THEORY ListOutputX IS
   List_Output(Machine(Rialuecho),adicionar_carrinho)==(?);
   List_Output(Machine(Rialuecho),dropar_carrinho)==(?);
   List_Output(Machine(Rialuecho),adicionar_produto)==(?);
-  List_Output(Machine(Rialuecho),remover_produto)==(?)
+  List_Output(Machine(Rialuecho),remover_produto)==(?);
+  List_Output(Machine(Rialuecho),comprar)==(?)
 END
 &
 THEORY ListHeaderX IS
   List_Header(Machine(Rialuecho),adicionar_carrinho)==(adicionar_carrinho(xx));
   List_Header(Machine(Rialuecho),dropar_carrinho)==(dropar_carrinho(xx));
   List_Header(Machine(Rialuecho),adicionar_produto)==(adicionar_produto(prod,xx));
-  List_Header(Machine(Rialuecho),remover_produto)==(remover_produto(prod,xx))
+  List_Header(Machine(Rialuecho),remover_produto)==(remover_produto(prod,xx));
+  List_Header(Machine(Rialuecho),comprar)==(comprar(xx))
 END
 &
 THEORY ListOperationGuardX END
@@ -126,10 +129,12 @@ THEORY ListPreconditionX IS
   List_Precondition(Machine(Rialuecho),adicionar_carrinho)==(xx: num_carrinho & xx/:carrinhos);
   List_Precondition(Machine(Rialuecho),dropar_carrinho)==(xx: num_carrinho & xx: carrinhos);
   List_Precondition(Machine(Rialuecho),adicionar_produto)==(prod: produto & xx: num_carrinho & xx: carrinhos & prod/:lista_produtos(xx));
-  List_Precondition(Machine(Rialuecho),remover_produto)==(prod: produto & xx: num_carrinho & xx: carrinhos & prod: lista_produtos(xx))
+  List_Precondition(Machine(Rialuecho),remover_produto)==(prod: produto & xx: num_carrinho & xx: carrinhos & prod: lista_produtos(xx));
+  List_Precondition(Machine(Rialuecho),comprar)==(xx: num_carrinho & xx: carrinhos & lista_produtos(xx)/={})
 END
 &
 THEORY ListSubstitutionX IS
+  Expanded_List_Substitution(Machine(Rialuecho),comprar)==(xx: num_carrinho & xx: carrinhos & lista_produtos(xx)/={} | lista_produtos,carrinhos:={xx}<<|lista_produtos,carrinhos-{xx});
   Expanded_List_Substitution(Machine(Rialuecho),remover_produto)==(prod: produto & xx: num_carrinho & xx: carrinhos & prod: lista_produtos(xx) | lista_produtos:=lista_produtos<+{xx|->lista_produtos(xx)-{prod}});
   Expanded_List_Substitution(Machine(Rialuecho),adicionar_produto)==(prod: produto & xx: num_carrinho & xx: carrinhos & prod/:lista_produtos(xx) | lista_produtos:=lista_produtos<+{xx|->(lista_produtos(xx)\/{prod})});
   Expanded_List_Substitution(Machine(Rialuecho),dropar_carrinho)==(xx: num_carrinho & xx: carrinhos | lista_produtos,carrinhos:={xx}<<|lista_produtos,carrinhos-{xx});
@@ -137,7 +142,8 @@ THEORY ListSubstitutionX IS
   List_Substitution(Machine(Rialuecho),adicionar_carrinho)==(carrinhos:=carrinhos\/{xx} || lista_produtos:=lista_produtos\/{xx|->{}});
   List_Substitution(Machine(Rialuecho),dropar_carrinho)==(lista_produtos:={xx}<<|lista_produtos || carrinhos:=carrinhos-{xx});
   List_Substitution(Machine(Rialuecho),adicionar_produto)==(lista_produtos:=lista_produtos<+{xx|->(lista_produtos(xx)\/{prod})});
-  List_Substitution(Machine(Rialuecho),remover_produto)==(lista_produtos:=lista_produtos<+{xx|->lista_produtos(xx)-{prod}})
+  List_Substitution(Machine(Rialuecho),remover_produto)==(lista_produtos:=lista_produtos<+{xx|->lista_produtos(xx)-{prod}});
+  List_Substitution(Machine(Rialuecho),comprar)==(lista_produtos:={xx}<<|lista_produtos || carrinhos:=carrinhos-{xx})
 END
 &
 THEORY ListConstantsX IS
@@ -188,11 +194,12 @@ THEORY ListANYVarX IS
   List_ANY_Var(Machine(Rialuecho),adicionar_carrinho)==(?);
   List_ANY_Var(Machine(Rialuecho),dropar_carrinho)==(?);
   List_ANY_Var(Machine(Rialuecho),adicionar_produto)==(?);
-  List_ANY_Var(Machine(Rialuecho),remover_produto)==(?)
+  List_ANY_Var(Machine(Rialuecho),remover_produto)==(?);
+  List_ANY_Var(Machine(Rialuecho),comprar)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Rialuecho)) == (? | ? | lista_produtos,carrinhos | ? | adicionar_carrinho,dropar_carrinho,adicionar_produto,remover_produto | ? | seen(Machine(Rialuecho_ctx)) | ? | Rialuecho);
+  List_Of_Ids(Machine(Rialuecho)) == (? | ? | lista_produtos,carrinhos | ? | adicionar_carrinho,dropar_carrinho,adicionar_produto,remover_produto,comprar | ? | seen(Machine(Rialuecho_ctx)) | ? | Rialuecho);
   List_Of_HiddenCst_Ids(Machine(Rialuecho)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Rialuecho)) == (?);
   List_Of_VisibleVar_Ids(Machine(Rialuecho)) == (? | ?);
@@ -209,7 +216,7 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Rialuecho)) == (Type(remover_produto) == Cst(No_type,atype(produto,?,?)*atype(num_carrinho,?,?));Type(adicionar_produto) == Cst(No_type,atype(produto,?,?)*atype(num_carrinho,?,?));Type(dropar_carrinho) == Cst(No_type,atype(num_carrinho,?,?));Type(adicionar_carrinho) == Cst(No_type,atype(num_carrinho,?,?)))
+  Operations(Machine(Rialuecho)) == (Type(comprar) == Cst(No_type,atype(num_carrinho,?,?));Type(remover_produto) == Cst(No_type,atype(produto,?,?)*atype(num_carrinho,?,?));Type(adicionar_produto) == Cst(No_type,atype(produto,?,?)*atype(num_carrinho,?,?));Type(dropar_carrinho) == Cst(No_type,atype(num_carrinho,?,?));Type(adicionar_carrinho) == Cst(No_type,atype(num_carrinho,?,?)))
 END
 &
 THEORY TCIntRdX IS

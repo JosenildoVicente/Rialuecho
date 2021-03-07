@@ -698,6 +698,149 @@
 </Assignement_Sub>
 </Body>
 </Operation>
+<Operation name='comprar'>
+<Attr>
+<Pos l='59' c='5' s='7' endLine='67'/>
+</Attr>
+<Input_Parameters>
+<Id value='xx' typref='1676006241'>
+<Attr>
+<Pos l='59' c='13' s='2'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='61' c='11' s='1'/>
+</Attr>
+<Id value='xx' typref='1676006241'>
+<Attr>
+<Pos l='61' c='9' s='2'/>
+</Attr>
+</Id>
+<Id value='num_carrinho' typref='4004769208'>
+<Attr>
+<Pos l='61' c='12' s='12'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='62' c='13' s='1'/>
+</Attr>
+<Id value='xx' typref='1676006241'>
+<Attr>
+<Pos l='62' c='11' s='2'/>
+</Attr>
+</Id>
+<Id value='carrinhos' typref='4004769208'>
+<Attr>
+<Pos l='62' c='15' s='9'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op='/='>
+<Attr>
+<Pos l='63' c='30' s='2'/>
+</Attr>
+<Binary_Exp op='(' typref='153963508'>
+<Attr>
+<Pos l='63' c='25' s='0'/>
+</Attr>
+<Id value='lista_produtos' typref='3668205043'>
+<Attr>
+<Pos l='63' c='11' s='14'/>
+</Attr>
+</Id>
+<Id value='xx' typref='1676006241'>
+<Attr>
+<Pos l='63' c='26' s='2'/>
+</Attr>
+</Id>
+</Binary_Exp>
+<EmptySet typref='153963508'>
+<Attr>
+<Pos l='63' c='33' s='2'/>
+</Attr>
+</EmptySet>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Attr>
+<Pos l='65' c='24' s='2'/>
+</Attr>
+<Variables>
+<Id value='lista_produtos' typref='3668205043'>
+<Attr>
+<Pos l='65' c='9' s='14'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op='&lt;&lt;|' typref='3668205043'>
+<Attr>
+<Pos l='65' c='32' s='3'/>
+</Attr>
+<Nary_Exp op='{' typref='4004769208'>
+<Attr>
+<Pos l='65' c='27' s='1'/>
+</Attr>
+<Id value='xx' typref='1676006241'>
+<Attr>
+<Pos l='65' c='28' s='2'/>
+</Attr>
+</Id>
+</Nary_Exp>
+<Id value='lista_produtos' typref='3668205043'>
+<Attr>
+<Pos l='65' c='36' s='14'/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Attr>
+<Pos l='66' c='22' s='2'/>
+</Attr>
+<Variables>
+<Id value='carrinhos' typref='4004769208'>
+<Attr>
+<Pos l='66' c='12' s='9'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='4004769208'>
+<Attr>
+<Pos l='66' c='35' s='1'/>
+</Attr>
+<Id value='carrinhos' typref='4004769208'>
+<Attr>
+<Pos l='66' c='25' s='9'/>
+</Attr>
+</Id>
+<Nary_Exp op='{' typref='4004769208'>
+<Attr>
+<Pos l='66' c='37' s='1'/>
+</Attr>
+<Id value='xx' typref='1676006241'>
+<Attr>
+<Pos l='66' c='38' s='2'/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Body>
+</Operation>
 </Operations>
 <TypeInfos>
 <Type id='4004769208'>

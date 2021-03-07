@@ -55,5 +55,16 @@ OPERATIONS
     THEN
         lista_produtos := lista_produtos <+ {xx |-> (lista_produtos(xx) - {prod})}
     END
+    ;
+    comprar(xx) =
+    PRE
+        xx:num_carrinho
+        & xx: carrinhos
+        & lista_produtos(xx) /= {}
+    THEN
+        lista_produtos := {xx} <<| lista_produtos
+        || carrinhos := carrinhos - {xx}
+    END
+    
     
 END
