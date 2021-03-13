@@ -3,9 +3,8 @@
  * Creation date: 07/03/2021
  */
 MACHINE
-    Rialuecho_ctx
+    Compra_ctx
 SETS
-    num_carrinho ;
-    produtos
-
+    estados_da_compra;
+    metodos_de_pagamento
 END
