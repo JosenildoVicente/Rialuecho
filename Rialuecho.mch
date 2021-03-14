@@ -9,16 +9,16 @@ SEES
     Compra_ctx
 VARIABLES
     carrinhos ,
-    lista_produtos,
+    produtos_por_carrinho,
     produts
 INVARIANT
     carrinhos : POW ( num_carrinho )
     & produts : ids_produto +-> struct(qtd: NAT, valor: NAT)
-    & lista_produtos : carrinhos +-> POW ( produts )
+    & produtos_por_carrinho : carrinhos +-> POW(struct(id_prod: ids_produto, qtd: NAT, valor: NAT))
 
 INITIALISATION
     carrinhos := {}
-    || lista_produtos := {}
+    || produtos_por_carrinho := {}
     || produts := {}
 OPERATIONS
     adicionar_carrinho ( xx ) =
@@ -27,7 +27,7 @@ OPERATIONS
         & xx /: carrinhos
     THEN
         carrinhos := carrinhos \/ { xx }
-        || lista_produtos := lista_produtos \/ { xx |-> {} }
+        || produtos_por_carrinho := produtos_por_carrinho \/ { xx |-> {} }
     END
     ;
     dropar_carrinho ( xx ) =
@@ -35,7 +35,7 @@ OPERATIONS
         xx : num_carrinho
         & xx : carrinhos
     THEN
-        lista_produtos := { xx } <<| lista_produtos
+        produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
     END
     ;
@@ -67,32 +67,37 @@ OPERATIONS
         nome : dom(produts)
         & nome : ids_produto
         & xx : num_carrinho
-        & xx : dom(lista_produtos)
+        & xx : dom(produtos_por_carrinho)
         & qtd : NAT
         & qtd > 0
         & (produts(nome))'qtd >= qtd
     THEN
         produts := produts <+ {nome |-> rec(qtd : (produts(nome))'qtd - qtd, valor : (produts(nome))'valor)}
-        || lista_produtos := lista_produtos <+ { xx |-> ( (lista_produtos ( xx )) \/ { nome |-> rec(qtd : qtd, valor : (produts(nome))'valor) } ) }
+        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( (produtos_por_carrinho ( xx )) \/ { rec(id_prod: nome, qtd : qtd, valor : (produts(nome))'valor) } ) }
     END
     ;
-    remover_produto_do_carrinho ( prod , xx ) =
+    remover_produto_do_carrinho ( id_prod , xx ) =
     PRE
-        prod : produts
+        id_prod: ids_produto
         & xx : num_carrinho
-        & xx : dom(lista_produtos)
-        & prod : lista_produtos ( xx )
+        & xx : dom(produtos_por_carrinho)
+//        & # prod . (prod : (produtos_por_carrinho ( xx )) => prod = { rec(id_prod: id_prod, qtd: NAT, valor: ANY) })
+       // TODO: condicional de id_prod existir no carrinho
     THEN
-        lista_produtos := lista_produtos <+ { xx |-> ( lista_produtos ( xx ) - { prod } ) } // precisamos igualar ao adicionar
+        LET prod BE prod = {pr | { pr } : (produtos_por_carrinho ( xx )) & pr'id_prod = id_prod}
+        IN
+          produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - { prod } ) }
+          || produts := produts <+ {id_prod |-> rec(qtd : (produts(id_prod))'qtd + prod'qtd, valor : (produts(id_prod))'valor)}
+        END
     END
     ;
     comprar ( xx ) =
     PRE
         xx : num_carrinho
-        & xx : dom(lista_produtos)
-        & lista_produtos ( xx ) /= {}
+        & xx : dom(produtos_por_carrinho)
+        & produtos_por_carrinho ( xx ) /= {}
     THEN
-        lista_produtos := { xx } <<| lista_produtos
+        produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
     END
 //    ;
