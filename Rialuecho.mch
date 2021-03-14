@@ -45,7 +45,7 @@ OPERATIONS
         & id_produto : ids_produto
         & id_produto /: dom(produts)
         & produto'qtd > 0
-        & produto'valor > 0
+        & produto'valor > 0 // TODO: nao adicionar o mesmo produto de novo
     THEN
         produts := produts \/ {id_produto |-> produto}
     END
@@ -73,7 +73,7 @@ OPERATIONS
         & (produts(nome))'qtd >= qtd
     THEN
         produts := produts <+ {nome |-> rec(qtd : (produts(nome))'qtd - qtd, valor : (produts(nome))'valor)}
-        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( (produtos_por_carrinho ( xx )) \/ { rec(id_prod: nome, qtd : qtd, valor : (produts(nome))'valor) } ) }
+        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( (produtos_por_carrinho ( xx )) \/ { rec(id_prod: nome, qtd : qtd, valor : (produts(nome))'valor) } ) } // TODO: Rever POs
     END
     ;
     remover_produto_do_carrinho ( id_prod , xx ) =
@@ -84,14 +84,14 @@ OPERATIONS
 //        & # prod . (prod : (produtos_por_carrinho ( xx )) => prod = { rec(id_prod: id_prod, qtd: NAT, valor: ANY) })
        // TODO: condicional de id_prod existir no carrinho
     THEN
-        LET prod BE prod = {pr | { pr } : (produtos_por_carrinho ( xx )) & pr'id_prod = id_prod}
+        LET prod BE prod = {pr | pr : struct(id_prod: ids_produto, qtd: NAT, valor: NAT) & pr : (produtos_por_carrinho ( xx )) & pr'id_prod = id_prod}
         IN
-          produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - { prod } ) }
-          || produts := produts <+ {id_prod |-> rec(qtd : (produts(id_prod))'qtd + prod'qtd, valor : (produts(id_prod))'valor)}
+          produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - prod ) }
+//          || produts := produts <+ {id_prod |-> rec(qtd : (produts(id_prod))'qtd + prod'qtd, valor : (produts(id_prod))'valor)}
         END
     END
     ;
-    comprar ( xx ) =
+    comprar ( xx ) = // reajust
     PRE
         xx : num_carrinho
         & xx : dom(produtos_por_carrinho)
