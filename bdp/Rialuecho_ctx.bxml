@@ -11,9 +11,9 @@
 </Id>
 </Set>
 <Set>
-<Id value='produto' typref='153963508'>
+<Id value='ids_produto' typref='1212424141'>
 <Attr>
-<Pos l='9' c='5' s='7'/>
+<Pos l='9' c='5' s='11'/>
 </Attr>
 </Id>
 </Set>
@@ -27,9 +27,9 @@
 <Id value='num_carrinho'/>
 </Unary_Exp>
 </Type>
-<Type id='153963508'>
+<Type id='1212424141'>
 <Unary_Exp op='POW'>
-<Id value='produto'/>
+<Id value='ids_produto'/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

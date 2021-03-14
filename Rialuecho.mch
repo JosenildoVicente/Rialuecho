@@ -44,6 +44,8 @@ OPERATIONS
         produto : struct(qtd: NAT, valor: NAT)
         & id_produto : ids_produto
         & id_produto /: dom(produts)
+        & produto'qtd > 0
+        & produto'valor > 0
     THEN
         produts := produts \/ {id_produto |-> produto}
     END
@@ -53,6 +55,7 @@ OPERATIONS
         id_produto : ids_produto
         & id_produto : dom(produts)
         & qtd : NATURAL
+        & qtd > 0
         & (produts(id_produto))'qtd >= qtd
     THEN
         produts := produts <+ {id_produto |-> rec(qtd : (produts(id_produto))'qtd - qtd, valor : (produts(id_produto))'valor)}
@@ -66,6 +69,7 @@ OPERATIONS
         & xx : num_carrinho
         & xx : dom(lista_produtos)
         & qtd : NAT
+        & qtd > 0
         & (produts(nome))'qtd >= qtd
     THEN
         produts := produts <+ {nome |-> rec(qtd : (produts(nome))'qtd - qtd, valor : (produts(nome))'valor)}

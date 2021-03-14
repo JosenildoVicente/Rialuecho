@@ -110,15 +110,15 @@ THEORY ListConstantsX IS
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Implementation(Rialuecho_ctx_i),produto)==(?);
+  Set_Definition(Implementation(Rialuecho_ctx_i),ids_produto)==(?);
   Context_List_Enumerated(Implementation(Rialuecho_ctx_i))==(?);
   Context_List_Defered(Implementation(Rialuecho_ctx_i))==(?);
   Context_List_Sets(Implementation(Rialuecho_ctx_i))==(?);
   List_Own_Enumerated(Implementation(Rialuecho_ctx_i))==(?);
-  List_Valuable_Sets(Implementation(Rialuecho_ctx_i))==(num_carrinho,produto);
+  List_Valuable_Sets(Implementation(Rialuecho_ctx_i))==(num_carrinho,ids_produto);
   Inherited_List_Enumerated(Implementation(Rialuecho_ctx_i))==(?);
-  Inherited_List_Defered(Implementation(Rialuecho_ctx_i))==(num_carrinho,produto);
-  Inherited_List_Sets(Implementation(Rialuecho_ctx_i))==(num_carrinho,produto);
+  Inherited_List_Defered(Implementation(Rialuecho_ctx_i))==(num_carrinho,ids_produto);
+  Inherited_List_Sets(Implementation(Rialuecho_ctx_i))==(num_carrinho,ids_produto);
   List_Enumerated(Implementation(Rialuecho_ctx_i))==(?);
   List_Defered(Implementation(Rialuecho_ctx_i))==(?);
   List_Sets(Implementation(Rialuecho_ctx_i))==(?);
@@ -133,7 +133,7 @@ THEORY ListHiddenConstantsX IS
 END
 &
 THEORY ListPropertiesX IS
-  Abstract_List_Properties(Implementation(Rialuecho_ctx_i))==(num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & produto: FIN(INTEGER) & not(produto = {}));
+  Abstract_List_Properties(Implementation(Rialuecho_ctx_i))==(num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & ids_produto: FIN(INTEGER) & not(ids_produto = {}));
   Context_List_Properties(Implementation(Rialuecho_ctx_i))==(btrue);
   Inherited_List_Properties(Implementation(Rialuecho_ctx_i))==(btrue);
   List_Properties(Implementation(Rialuecho_ctx_i))==(btrue)
@@ -141,8 +141,8 @@ END
 &
 THEORY ListValuesX IS
   Precond_Valued_Objects(Implementation(Rialuecho_ctx_i))==(btrue);
-  Values_Subs(Implementation(Rialuecho_ctx_i))==(num_carrinho,produto: {1,2,3,4,5,6,7,8,9,10},{10,15,20,14,17,13,1,7,6,8,3,4,18,20,50});
-  List_Values(Implementation(Rialuecho_ctx_i))==(num_carrinho = {1,2,3,4,5,6,7,8,9,10};produto = {10,15,20,14,17,13,1,7,6,8,3,4,18,20,50})
+  Values_Subs(Implementation(Rialuecho_ctx_i))==(num_carrinho,ids_produto: {1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6});
+  List_Values(Implementation(Rialuecho_ctx_i))==(num_carrinho = {1,2,3,4,5,6,7,8,9,10};ids_produto = {1,2,3,4,5,6})
 END
 &
 THEORY ListSeenInfoX END
@@ -162,7 +162,7 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Implementation(Rialuecho_ctx_i)) == (Type(produto) == Cst(SetOf(btype(INTEGER,"[produto","]produto")));Type(num_carrinho) == Cst(SetOf(btype(INTEGER,"[num_carrinho","]num_carrinho"))))
+  Sets(Implementation(Rialuecho_ctx_i)) == (Type(ids_produto) == Cst(SetOf(btype(INTEGER,"[ids_produto","]ids_produto")));Type(num_carrinho) == Cst(SetOf(btype(INTEGER,"[num_carrinho","]num_carrinho"))))
 END
 &
 THEORY TCIntRdX IS

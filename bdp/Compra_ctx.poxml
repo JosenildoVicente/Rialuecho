@@ -21,19 +21,19 @@
 <Define name="seext"/>
 <Define name="lprp">
 <Attr>
-<Pos c="1" s="4" l="7"/>
+<Pos c="1" l="7" s="4"/>
 </Attr>
 <Set>
-<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:1:1:1" typref="4004769208" value="num_carrinho">
+<Id typref="3671756201" value="estados_da_compra" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:1:1:1">
 <Attr>
-<Pos c="5" s="12" l="8"/>
+<Pos c="5" l="8" s="17"/>
 </Attr>
 </Id>
 </Set>
 <Set>
-<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:1:2:1" typref="1212424141" value="ids_produto">
+<Id typref="776319367" value="metodos_de_pagamento" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:1:2:1">
 <Attr>
-<Pos c="5" s="11" l="9"/>
+<Pos c="5" l="9" s="20"/>
 </Attr>
 </Id>
 </Set>
@@ -57,7 +57,7 @@
 <Goal>
 <Sub_Calculus>
 <Nary_Sub op=";">
-<Skip tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:2:1"/>
+<Skip tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:2:1"/>
 </Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
@@ -83,19 +83,19 @@
 <Definition name="cst"/>
 <Hypothesis>
 <Attr>
-<Pos c="1" s="4" l="7"/>
+<Pos c="1" l="7" s="4"/>
 </Attr>
 <Set>
-<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:1:1:1" typref="4004769208" value="num_carrinho">
+<Id typref="3671756201" value="estados_da_compra" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:1:1:1">
 <Attr>
-<Pos c="5" s="12" l="8"/>
+<Pos c="5" l="8" s="17"/>
 </Attr>
 </Id>
 </Set>
 <Set>
-<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:1:2:1" typref="1212424141" value="ids_produto">
+<Id typref="776319367" value="metodos_de_pagamento" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:1:2:1">
 <Attr>
-<Pos c="5" s="11" l="9"/>
+<Pos c="5" l="9" s="20"/>
 </Attr>
 </Id>
 </Set>
@@ -139,14 +139,14 @@
 </Goal>
 </Proof_Obligation>
 <TypeInfos>
-<Type id="4004769208">
+<Type id="3671756201">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:3:1:1:1" value="num_carrinho"/>
+<Id value="estados_da_compra" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:3:1:1:1"/>
 </Unary_Exp>
 </Type>
-<Type id="1212424141">
+<Type id="776319367">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx.bxml:1:3:2:1:1" value="ids_produto"/>
+<Id value="metodos_de_pagamento" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Compra_ctx.bxml:1:3:2:1:1"/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

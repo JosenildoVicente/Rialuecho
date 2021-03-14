@@ -1,0 +1,14 @@
+THEORY ProofList
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+estados_da_compra: FIN(INTEGER) & not(estados_da_compra = {}) & metodos_de_pagamento: FIN(INTEGER) & not(metodos_de_pagamento = {});
+((estado) : (estados_da_compra));
+((estado_da_compra) : (estados_da_compra));
+((metodo_de_pagamento) : (metodos_de_pagamento));
+btrue
+END
+&
+THEORY EnumerateX
+END

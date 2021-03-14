@@ -22,19 +22,19 @@
 <Define name="mchcst"/>
 <Define name="aprp">
 <Attr>
-<Pos s="4" l="7" c="1"/>
+<Pos l="7" c="1" s="4"/>
 </Attr>
 <Set>
 <Id value="num_carrinho" typref="4004769208" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:1:1">
 <Attr>
-<Pos s="12" l="8" c="5"/>
+<Pos l="8" c="5" s="12"/>
 </Attr>
 </Id>
 </Set>
 <Set>
-<Id value="produto" typref="153963508" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:2:1">
+<Id value="ids_produto" typref="1212424141" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:2:1">
 <Attr>
-<Pos s="7" l="9" c="5"/>
+<Pos l="9" c="5" s="11"/>
 </Attr>
 </Id>
 </Set>
@@ -46,154 +46,109 @@
 <Exp_Comparison op="=">
 <Id value="num_carrinho" typref="3603043417">
 <Attr>
-<Pos s="12" l="10" c="5"/>
+<Pos l="10" c="5" s="12"/>
 </Attr>
 </Id>
 <Attr>
-<Pos s="12" l="10" c="5"/>
+<Pos l="10" c="5" s="12"/>
 </Attr>
-<Nary_Exp op="{" typref="3603043417">
+<Nary_Exp typref="3603043417" op="{">
 <Attr>
-<Pos s="1" l="10" c="20"/>
+<Pos l="10" c="20" s="1"/>
 </Attr>
 <Integer_Literal value="1" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:1">
 <Attr>
-<Pos s="1" l="10" c="21"/>
+<Pos l="10" c="21" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="2" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:2">
 <Attr>
-<Pos s="1" l="10" c="23"/>
+<Pos l="10" c="23" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="3" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:3">
 <Attr>
-<Pos s="1" l="10" c="25"/>
+<Pos l="10" c="25" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="4" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:4">
 <Attr>
-<Pos s="1" l="10" c="27"/>
+<Pos l="10" c="27" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="5" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:5">
 <Attr>
-<Pos s="1" l="10" c="29"/>
+<Pos l="10" c="29" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="6" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:6">
 <Attr>
-<Pos s="1" l="10" c="31"/>
+<Pos l="10" c="31" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="7" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:7">
 <Attr>
-<Pos s="1" l="10" c="33"/>
+<Pos l="10" c="33" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="8" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:8">
 <Attr>
-<Pos s="1" l="10" c="35"/>
+<Pos l="10" c="35" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="9" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:9">
 <Attr>
-<Pos s="1" l="10" c="37"/>
+<Pos l="10" c="37" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="10" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:10">
 <Attr>
-<Pos s="2" l="10" c="39"/>
+<Pos l="10" c="39" s="2"/>
 </Attr>
 </Integer_Literal>
 </Nary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op="=">
-<Id value="produto" typref="3603043417">
+<Id value="ids_produto" typref="3603043417">
 <Attr>
-<Pos s="7" l="12" c="5"/>
+<Pos l="11" c="5" s="11"/>
 </Attr>
 </Id>
 <Attr>
-<Pos s="7" l="12" c="5"/>
+<Pos l="11" c="5" s="11"/>
 </Attr>
-<Nary_Exp op="{" typref="3603043417">
+<Nary_Exp typref="3603043417" op="{">
 <Attr>
-<Pos s="1" l="12" c="15"/>
+<Pos l="11" c="19" s="1"/>
 </Attr>
-<Integer_Literal value="10" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:1">
+<Integer_Literal value="1" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:1">
 <Attr>
-<Pos s="2" l="12" c="16"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="15" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:2">
-<Attr>
-<Pos s="2" l="12" c="19"/>
+<Pos l="11" c="20" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="20" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:3">
+<Integer_Literal value="2" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:2">
 <Attr>
-<Pos s="2" l="12" c="22"/>
+<Pos l="11" c="22" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="14" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:4">
+<Integer_Literal value="3" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:3">
 <Attr>
-<Pos s="2" l="12" c="25"/>
+<Pos l="11" c="24" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="17" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:5">
+<Integer_Literal value="4" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:4">
 <Attr>
-<Pos s="2" l="12" c="28"/>
+<Pos l="11" c="26" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="13" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:6">
+<Integer_Literal value="5" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:5">
 <Attr>
-<Pos s="2" l="12" c="31"/>
+<Pos l="11" c="28" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="1" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:7">
+<Integer_Literal value="6" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:6">
 <Attr>
-<Pos s="1" l="12" c="34"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="7" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:8">
-<Attr>
-<Pos s="1" l="12" c="36"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="6" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:9">
-<Attr>
-<Pos s="1" l="12" c="38"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="8" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:10">
-<Attr>
-<Pos s="1" l="12" c="40"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="3" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:11">
-<Attr>
-<Pos s="1" l="12" c="42"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="4" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:12">
-<Attr>
-<Pos s="1" l="12" c="44"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="18" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:13">
-<Attr>
-<Pos s="2" l="12" c="46"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="20" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:14">
-<Attr>
-<Pos s="2" l="12" c="49"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="50" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:15">
-<Attr>
-<Pos s="2" l="12" c="52"/>
+<Pos l="11" c="30" s="1"/>
 </Attr>
 </Integer_Literal>
 </Nary_Exp>
@@ -224,7 +179,7 @@
 </Variables>
 <Values>
 <Attr>
-<Pos s="12" l="10" c="5"/>
+<Pos l="10" c="5" s="12"/>
 </Attr>
 </Values>
 </Simple_Assignement_Sub>
@@ -233,58 +188,58 @@
 <Id value="num_carrinho"/>
 </Variables>
 <Values>
-<Nary_Exp op="{" typref="3603043417">
+<Nary_Exp typref="3603043417" op="{">
 <Attr>
-<Pos s="1" l="10" c="20"/>
+<Pos l="10" c="20" s="1"/>
 </Attr>
 <Integer_Literal value="1" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:1">
 <Attr>
-<Pos s="1" l="10" c="21"/>
+<Pos l="10" c="21" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="2" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:2">
 <Attr>
-<Pos s="1" l="10" c="23"/>
+<Pos l="10" c="23" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="3" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:3">
 <Attr>
-<Pos s="1" l="10" c="25"/>
+<Pos l="10" c="25" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="4" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:4">
 <Attr>
-<Pos s="1" l="10" c="27"/>
+<Pos l="10" c="27" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="5" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:5">
 <Attr>
-<Pos s="1" l="10" c="29"/>
+<Pos l="10" c="29" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="6" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:6">
 <Attr>
-<Pos s="1" l="10" c="31"/>
+<Pos l="10" c="31" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="7" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:7">
 <Attr>
-<Pos s="1" l="10" c="33"/>
+<Pos l="10" c="33" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="8" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:8">
 <Attr>
-<Pos s="1" l="10" c="35"/>
+<Pos l="10" c="35" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="9" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:9">
 <Attr>
-<Pos s="1" l="10" c="37"/>
+<Pos l="10" c="37" s="1"/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value="10" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:1:1:10">
 <Attr>
-<Pos s="2" l="10" c="39"/>
+<Pos l="10" c="39" s="2"/>
 </Attr>
 </Integer_Literal>
 </Nary_Exp>
@@ -292,96 +247,51 @@
 </Simple_Assignement_Sub>
 <Simple_Assignement_Sub>
 <Variables>
-<Id value="produto"/>
+<Id value="ids_produto"/>
 </Variables>
 <Values>
 <Attr>
-<Pos s="7" l="12" c="5"/>
+<Pos l="11" c="5" s="11"/>
 </Attr>
 </Values>
 </Simple_Assignement_Sub>
 <Simple_Assignement_Sub>
 <Variables>
-<Id value="produto"/>
+<Id value="ids_produto"/>
 </Variables>
 <Values>
-<Nary_Exp op="{" typref="3603043417">
+<Nary_Exp typref="3603043417" op="{">
 <Attr>
-<Pos s="1" l="12" c="15"/>
+<Pos l="11" c="19" s="1"/>
 </Attr>
-<Integer_Literal value="10" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:1">
+<Integer_Literal value="1" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:1">
 <Attr>
-<Pos s="2" l="12" c="16"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="15" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:2">
-<Attr>
-<Pos s="2" l="12" c="19"/>
+<Pos l="11" c="20" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="20" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:3">
+<Integer_Literal value="2" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:2">
 <Attr>
-<Pos s="2" l="12" c="22"/>
+<Pos l="11" c="22" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="14" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:4">
+<Integer_Literal value="3" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:3">
 <Attr>
-<Pos s="2" l="12" c="25"/>
+<Pos l="11" c="24" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="17" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:5">
+<Integer_Literal value="4" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:4">
 <Attr>
-<Pos s="2" l="12" c="28"/>
+<Pos l="11" c="26" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="13" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:6">
+<Integer_Literal value="5" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:5">
 <Attr>
-<Pos s="2" l="12" c="31"/>
+<Pos l="11" c="28" s="1"/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value="1" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:7">
+<Integer_Literal value="6" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:6">
 <Attr>
-<Pos s="1" l="12" c="34"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="7" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:8">
-<Attr>
-<Pos s="1" l="12" c="36"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="6" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:9">
-<Attr>
-<Pos s="1" l="12" c="38"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="8" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:10">
-<Attr>
-<Pos s="1" l="12" c="40"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="3" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:11">
-<Attr>
-<Pos s="1" l="12" c="42"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="4" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:12">
-<Attr>
-<Pos s="1" l="12" c="44"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="18" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:13">
-<Attr>
-<Pos s="2" l="12" c="46"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="20" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:14">
-<Attr>
-<Pos s="2" l="12" c="49"/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value="50" typref="2701647786" tag="C:\Users\josen\Desktop\exerciciosB\projetoSistemasCriticos\bdp\Rialuecho_ctx_i.bxml:1:2:2:1:15">
-<Attr>
-<Pos s="2" l="12" c="52"/>
+<Pos l="11" c="30" s="1"/>
 </Attr>
 </Integer_Literal>
 </Nary_Exp>
@@ -390,19 +300,19 @@
 </Nary_Sub>
 <Nary_Pred op="&amp;">
 <Attr>
-<Pos s="4" l="7" c="1"/>
+<Pos l="7" c="1" s="4"/>
 </Attr>
 <Set>
 <Id value="num_carrinho" typref="4004769208" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:1:1">
 <Attr>
-<Pos s="12" l="8" c="5"/>
+<Pos l="8" c="5" s="12"/>
 </Attr>
 </Id>
 </Set>
 <Set>
-<Id value="produto" typref="153963508" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:2:1">
+<Id value="ids_produto" typref="1212424141" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:1:2:1">
 <Attr>
-<Pos s="7" l="9" c="5"/>
+<Pos l="9" c="5" s="11"/>
 </Attr>
 </Id>
 </Set>
@@ -511,9 +421,9 @@
 <Id value="num_carrinho" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:3:1:1:1"/>
 </Unary_Exp>
 </Type>
-<Type id="153963508">
+<Type id="1212424141">
 <Unary_Exp op="POW">
-<Id value="produto" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:3:2:1:1"/>
+<Id value="ids_produto" tag="C:/Users/josen/Desktop/exerciciosB/projetoSistemasCriticos/bdp\Rialuecho_ctx.bxml:1:3:2:1:1"/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

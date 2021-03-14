@@ -1,6 +1,10 @@
 digraph {
+Compra [ label=" Compra " shape= box ]
+Compra_ctx [ label=" Compra_ctx " shape= box ]
 Rialuecho [ label=" Rialuecho " shape= box ]
 Rialuecho_ctx_i [ label=" Rialuecho_ctx\nRialuecho_ctx_i " shape= box ]
 
+"Compra" -> "Compra_ctx" [style= dotted ]
 "Rialuecho" -> "Rialuecho_ctx_i" [style= dotted ]
+"Rialuecho" -> "Compra_ctx" [style= dotted ]
 }

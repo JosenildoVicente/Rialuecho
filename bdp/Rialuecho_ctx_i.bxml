@@ -64,87 +64,42 @@
 </Integer_Literal>
 </Nary_Exp>
 </Valuation>
-<Valuation ident='produto' typref='3603043417'>
+<Valuation ident='ids_produto' typref='3603043417'>
 <Attr>
-<Pos l='12' c='5' s='7'/>
+<Pos l='11' c='5' s='11'/>
 </Attr>
 <Nary_Exp op='{' typref='3603043417'>
 <Attr>
-<Pos l='12' c='15' s='1'/>
+<Pos l='11' c='19' s='1'/>
 </Attr>
-<Integer_Literal value='10' typref='2701647786'>
-<Attr>
-<Pos l='12' c='16' s='2'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='15' typref='2701647786'>
-<Attr>
-<Pos l='12' c='19' s='2'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='20' typref='2701647786'>
-<Attr>
-<Pos l='12' c='22' s='2'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='14' typref='2701647786'>
-<Attr>
-<Pos l='12' c='25' s='2'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='17' typref='2701647786'>
-<Attr>
-<Pos l='12' c='28' s='2'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='13' typref='2701647786'>
-<Attr>
-<Pos l='12' c='31' s='2'/>
-</Attr>
-</Integer_Literal>
 <Integer_Literal value='1' typref='2701647786'>
 <Attr>
-<Pos l='12' c='34' s='1'/>
+<Pos l='11' c='20' s='1'/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value='7' typref='2701647786'>
+<Integer_Literal value='2' typref='2701647786'>
 <Attr>
-<Pos l='12' c='36' s='1'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='6' typref='2701647786'>
-<Attr>
-<Pos l='12' c='38' s='1'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='8' typref='2701647786'>
-<Attr>
-<Pos l='12' c='40' s='1'/>
+<Pos l='11' c='22' s='1'/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value='3' typref='2701647786'>
 <Attr>
-<Pos l='12' c='42' s='1'/>
+<Pos l='11' c='24' s='1'/>
 </Attr>
 </Integer_Literal>
 <Integer_Literal value='4' typref='2701647786'>
 <Attr>
-<Pos l='12' c='44' s='1'/>
+<Pos l='11' c='26' s='1'/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value='18' typref='2701647786'>
+<Integer_Literal value='5' typref='2701647786'>
 <Attr>
-<Pos l='12' c='46' s='2'/>
+<Pos l='11' c='28' s='1'/>
 </Attr>
 </Integer_Literal>
-<Integer_Literal value='20' typref='2701647786'>
+<Integer_Literal value='6' typref='2701647786'>
 <Attr>
-<Pos l='12' c='49' s='2'/>
-</Attr>
-</Integer_Literal>
-<Integer_Literal value='50' typref='2701647786'>
-<Attr>
-<Pos l='12' c='52' s='2'/>
+<Pos l='11' c='30' s='1'/>
 </Attr>
 </Integer_Literal>
 </Nary_Exp>

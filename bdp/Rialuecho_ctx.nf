@@ -120,14 +120,14 @@ THEORY ListSetsX IS
   Context_List_Enumerated(Machine(Rialuecho_ctx))==(?);
   Context_List_Defered(Machine(Rialuecho_ctx))==(?);
   Context_List_Sets(Machine(Rialuecho_ctx))==(?);
-  List_Valuable_Sets(Machine(Rialuecho_ctx))==(num_carrinho,produto);
+  List_Valuable_Sets(Machine(Rialuecho_ctx))==(num_carrinho,ids_produto);
   Inherited_List_Enumerated(Machine(Rialuecho_ctx))==(?);
   Inherited_List_Defered(Machine(Rialuecho_ctx))==(?);
   Inherited_List_Sets(Machine(Rialuecho_ctx))==(?);
   List_Enumerated(Machine(Rialuecho_ctx))==(?);
-  List_Defered(Machine(Rialuecho_ctx))==(num_carrinho,produto);
-  List_Sets(Machine(Rialuecho_ctx))==(num_carrinho,produto);
-  Set_Definition(Machine(Rialuecho_ctx),produto)==(?)
+  List_Defered(Machine(Rialuecho_ctx))==(num_carrinho,ids_produto);
+  List_Sets(Machine(Rialuecho_ctx))==(num_carrinho,ids_produto);
+  Set_Definition(Machine(Rialuecho_ctx),ids_produto)==(?)
 END
 &
 THEORY ListHiddenConstantsX IS
@@ -141,7 +141,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Rialuecho_ctx))==(btrue);
   Context_List_Properties(Machine(Rialuecho_ctx))==(btrue);
   Inherited_List_Properties(Machine(Rialuecho_ctx))==(btrue);
-  List_Properties(Machine(Rialuecho_ctx))==(num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & produto: FIN(INTEGER) & not(produto = {}))
+  List_Properties(Machine(Rialuecho_ctx))==(num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & ids_produto: FIN(INTEGER) & not(ids_produto = {}))
 END
 &
 THEORY ListSeenInfoX END
@@ -149,7 +149,7 @@ THEORY ListSeenInfoX END
 THEORY ListANYVarX END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Rialuecho_ctx)) == (num_carrinho,produto | ? | ? | ? | ? | ? | ? | ? | Rialuecho_ctx);
+  List_Of_Ids(Machine(Rialuecho_ctx)) == (num_carrinho,ids_produto | ? | ? | ? | ? | ? | ? | ? | Rialuecho_ctx);
   List_Of_HiddenCst_Ids(Machine(Rialuecho_ctx)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Rialuecho_ctx)) == (?);
   List_Of_VisibleVar_Ids(Machine(Rialuecho_ctx)) == (? | ?);
@@ -157,7 +157,7 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Machine(Rialuecho_ctx)) == (Type(num_carrinho) == Cst(SetOf(atype(num_carrinho,"[num_carrinho","]num_carrinho")));Type(produto) == Cst(SetOf(atype(produto,"[produto","]produto"))))
+  Sets(Machine(Rialuecho_ctx)) == (Type(num_carrinho) == Cst(SetOf(atype(num_carrinho,"[num_carrinho","]num_carrinho")));Type(ids_produto) == Cst(SetOf(atype(ids_produto,"[ids_produto","]ids_produto"))))
 END
 &
 THEORY TCIntRdX IS

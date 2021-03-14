@@ -1,0 +1,200 @@
+<Machine name='Compra' type='abstraction'>
+<Sees>
+<Attr>
+<Pos l='7' c='1' s='4'/>
+</Attr>
+<Referenced_Machine>
+<Attr>
+<Pos l='8' c='5' s='10'/>
+</Attr>
+<Name>Compra_ctx</Name>
+</Referenced_Machine>
+</Sees>
+<Abstract_Variables>
+<Attr>
+<Pos l='9' c='1' s='18'/>
+</Attr>
+<Id value='estado_da_compra' typref='2618076634'>
+<Attr>
+<Pos l='10' c='5' s='16'/>
+</Attr>
+</Id>
+</Abstract_Variables>
+<Invariant>
+<Attr>
+<Pos l='11' c='1' s='9'/>
+</Attr>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='12' c='22' s='1'/>
+</Attr>
+<Id value='estado_da_compra' typref='2618076634'>
+<Attr>
+<Pos l='12' c='5' s='16'/>
+</Attr>
+</Id>
+<Id value='estados_da_compra' typref='3671756201'>
+<Attr>
+<Pos l='12' c='24' s='17'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Invariant>
+<Initialisation>
+<Attr>
+<Pos l='14' c='1' s='14'/>
+</Attr>
+<ANY_Sub>
+<Attr>
+<Pos l='15' c='5' s='3'/>
+</Attr>
+<Variables>
+<Id value='estado' typref='2618076634'>
+<Attr>
+<Pos l='15' c='9' s='6'/>
+</Attr>
+</Id>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='15' c='29' s='1'/>
+</Attr>
+<Id value='estado' typref='2618076634'>
+<Attr>
+<Pos l='15' c='22' s='6'/>
+</Attr>
+</Id>
+<Id value='estados_da_compra' typref='3671756201'>
+<Attr>
+<Pos l='15' c='31' s='17'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Assignement_Sub>
+<Attr>
+<Pos l='15' c='71' s='2'/>
+</Attr>
+<Variables>
+<Id value='estado_da_compra' typref='2618076634'>
+<Attr>
+<Pos l='15' c='54' s='16'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Id value='estado' typref='2618076634'>
+<Attr>
+<Pos l='15' c='74' s='6'/>
+</Attr>
+</Id>
+</Values>
+</Assignement_Sub>
+</Then>
+</ANY_Sub>
+</Initialisation>
+<Operations>
+<Operation name='comprar'>
+<Attr>
+<Pos l='17' c='5' s='7' endLine='22'/>
+</Attr>
+<Input_Parameters>
+<Id value='metodo_de_pagamento' typref='1026459858'>
+<Attr>
+<Pos l='17' c='15' s='19'/>
+</Attr>
+</Id>
+</Input_Parameters>
+<Precondition>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='19' c='29' s='1'/>
+</Attr>
+<Id value='metodo_de_pagamento' typref='1026459858'>
+<Attr>
+<Pos l='19' c='9' s='19'/>
+</Attr>
+</Id>
+<Id value='metodos_de_pagamento' typref='776319367'>
+<Attr>
+<Pos l='19' c='31' s='20'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Precondition>
+<Body>
+<ANY_Sub>
+<Attr>
+<Pos l='21' c='9' s='3'/>
+</Attr>
+<Variables>
+<Id value='estado' typref='2618076634'>
+<Attr>
+<Pos l='21' c='13' s='6'/>
+</Attr>
+</Id>
+</Variables>
+<Pred>
+<Exp_Comparison op=':'>
+<Attr>
+<Pos l='21' c='33' s='1'/>
+</Attr>
+<Id value='estado' typref='2618076634'>
+<Attr>
+<Pos l='21' c='26' s='6'/>
+</Attr>
+</Id>
+<Id value='estados_da_compra' typref='3671756201'>
+<Attr>
+<Pos l='21' c='35' s='17'/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Pred>
+<Then>
+<Assignement_Sub>
+<Attr>
+<Pos l='21' c='75' s='2'/>
+</Attr>
+<Variables>
+<Id value='estado_da_compra' typref='2618076634'>
+<Attr>
+<Pos l='21' c='58' s='16'/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Id value='estado' typref='2618076634'>
+<Attr>
+<Pos l='21' c='78' s='6'/>
+</Attr>
+</Id>
+</Values>
+</Assignement_Sub>
+</Then>
+</ANY_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2618076634'>
+<Id value='estados_da_compra'/>
+</Type>
+<Type id='3671756201'>
+<Unary_Exp op='POW'>
+<Id value='estados_da_compra'/>
+</Unary_Exp>
+</Type>
+<Type id='1026459858'>
+<Id value='metodos_de_pagamento'/>
+</Type>
+<Type id='776319367'>
+<Unary_Exp op='POW'>
+<Id value='metodos_de_pagamento'/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

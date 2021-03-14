@@ -6,6 +6,5 @@ MACHINE
     Rialuecho_ctx
 SETS
     num_carrinho ;
-    produto
-
+    ids_produto
 END
