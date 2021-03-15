@@ -1,4 +1,4 @@
-/* Rialuecho_ctx_i
+﻿/* Rialuecho_ctx_i
  * Authors: Arthur Pires, Josenildo Vicente, Renato Joaquim
  * Creation date: 07/03/2021
  */
@@ -7,8 +7,8 @@ IMPLEMENTATION Rialuecho_ctx_i
 REFINES Rialuecho_ctx
 
 VALUES
-    num_carrinho = {1,2,3,4,5,6,7,8,9,10};
-    ids_produto = {1,2,3,4,5,6}
+    num_carrinho = { 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 } ;
+    ids_produto = { 1 , 2 , 3 , 4 , 5 , 6 }
 //    valor dos produtos:
 //    produto = {10,15,20,14,17,13,1,7,6,8,3,4,18,20,50}
 

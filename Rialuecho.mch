@@ -1,20 +1,20 @@
-/* Rialuecho
+﻿/* Rialuecho
  * Authors: Arthur Pires, Josenildo Vicente, Renato Joaquim
  * Creation date: 07/03/2021
  */
 MACHINE
     Rialuecho
 SEES
-    Rialuecho_ctx,
+    Rialuecho_ctx ,
     Compra_ctx
-VARIABLES
+ABSTRACT_VARIABLES
     carrinhos ,
-    produtos_por_carrinho,
+    produtos_por_carrinho ,
     produts
 INVARIANT
     carrinhos : POW ( num_carrinho )
-    & produts : ids_produto +-> struct(qtd: NAT, valor: NAT)
-    & produtos_por_carrinho : carrinhos +-> POW(struct(id_prod: ids_produto, qtd: NAT, valor: NAT))
+    & produts : ids_produto +-> struct ( qtd : NAT , valor : NAT )
+    & produtos_por_carrinho : carrinhos +-> ( ids_produto +-> struct ( qtd : NAT , valor : NAT ) )
 
 INITIALISATION
     carrinhos := {}
@@ -39,62 +39,67 @@ OPERATIONS
         || carrinhos := carrinhos - { xx }
     END
     ;
-    adicionar_produto (id_produto, produto) =
+    adicionar_produto ( id_produto , produto ) =
     PRE
-        produto : struct(qtd: NAT, valor: NAT)
+        produto : struct ( qtd : NAT , valor : NAT )
         & id_produto : ids_produto
-        & id_produto /: dom(produts)
-        & produto'qtd > 0
-        & produto'valor > 0 // TODO: nao adicionar o mesmo produto de novo
+        & id_produto /: dom ( produts )
+        & produto ' qtd > 0
+        & produto ' valor > 0
     THEN
-        produts := produts \/ {id_produto |-> produto}
+        produts := produts \/ { id_produto |-> produto }
     END
     ;
-    remover_produto (id_produto, qtd) =
+    remover_produto ( id_produto , qtd ) =
     PRE
         id_produto : ids_produto
-        & id_produto : dom(produts)
+        & id_produto : dom ( produts )
         & qtd : NATURAL
         & qtd > 0
-        & (produts(id_produto))'qtd >= qtd
+        & ( produts ( id_produto ) ) ' qtd >= qtd
     THEN
-        produts := produts <+ {id_produto |-> rec(qtd : (produts(id_produto))'qtd - qtd, valor : (produts(id_produto))'valor)}
+        produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) ) ' qtd - qtd , valor : ( produts ( id_produto ) ) ' valor ) }
     END
     ;
-        
-    adicionar_produto_ao_carrinho ( nome , xx, qtd ) =
+
+    adicionar_produto_ao_carrinho ( nome , xx , qtd ) =
     PRE
-        nome : dom(produts)
+        nome : dom ( produts )
         & nome : ids_produto
         & xx : num_carrinho
-        & xx : dom(produtos_por_carrinho)
+        & xx : dom ( produtos_por_carrinho )
         & qtd : NAT
         & qtd > 0
-        & (produts(nome))'qtd >= qtd
+        & ( produts ( nome ) ) ' qtd >= qtd
     THEN
-        produts := produts <+ {nome |-> rec(qtd : (produts(nome))'qtd - qtd, valor : (produts(nome))'valor)}
-        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( (produtos_por_carrinho ( xx )) \/ { rec(id_prod: nome, qtd : qtd, valor : (produts(nome))'valor) } ) } // TODO: Rever POs
+        produts := produts <+ { nome |-> rec ( qtd : ( produts ( nome ) ) ' qtd - qtd , valor : ( produts ( nome ) ) ' valor ) }
+        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) \/ { nome |-> rec ( qtd : qtd , valor : ( produts ( nome ) ) ' valor ) } ) } // TODO: Rever POs
     END
     ;
     remover_produto_do_carrinho ( id_prod , xx ) =
     PRE
-        id_prod: ids_produto
+        id_prod : dom ( produts )
+        & id_prod : ids_produto
         & xx : num_carrinho
-        & xx : dom(produtos_por_carrinho)
-//        & # prod . (prod : (produtos_por_carrinho ( xx )) => prod = { rec(id_prod: id_prod, qtd: NAT, valor: ANY) })
-       // TODO: condicional de id_prod existir no carrinho
+        & xx : dom ( produtos_por_carrinho )
+        & ! pc . ( pc : dom ( produtos_por_carrinho ( xx ) ) => pc = id_prod )
+
+
+
+
     THEN
-        LET prod BE prod = {pr | pr : struct(id_prod: ids_produto, qtd: NAT, valor: NAT) & pr : (produtos_por_carrinho ( xx )) & pr'id_prod = id_prod}
-        IN
-          produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - prod ) }
-//          || produts := produts <+ {id_prod |-> rec(qtd : (produts(id_prod))'qtd + prod'qtd, valor : (produts(id_prod))'valor)}
-        END
+//        LET prod BE prod = pr. ( pr: produtos_por_carrinho(xx) => pr'id_prod = id_prod )
+//        IN
+////            produts := produts <+ {id_prod |-> rec(qtd: (produts(id_prod))'qtd + (prod)'qtd, valor: (produts(id_prod))'valor) } 
+        produts := produts <+ { id_prod |-> rec ( qtd : ( produts ( id_prod ) ) ' qtd + ( produtos_por_carrinho ( xx ) ( id_prod ) ) ' qtd , valor : ( produts ( id_prod ) ) ' valor ) }
+        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - { id_prod |-> rec ( qtd : ( produtos_por_carrinho ( xx ) ( id_prod ) ) ' qtd , valor : ( produtos_por_carrinho ( xx ) ( id_prod ) ) ' valor ) } ) }
+//        END
     END
     ;
     comprar ( xx ) = // reajust
     PRE
         xx : num_carrinho
-        & xx : dom(produtos_por_carrinho)
+        & xx : dom ( produtos_por_carrinho )
         & produtos_por_carrinho ( xx ) /= {}
     THEN
         produtos_por_carrinho := { xx } <<| produtos_por_carrinho
