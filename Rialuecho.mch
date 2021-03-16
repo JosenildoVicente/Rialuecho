@@ -52,12 +52,16 @@ OPERATIONS
     PRE
         produto : struct ( qtd : NAT , valor : NAT )
         & id_produto : ids_produto
-        & id_produto /: dom ( produts )
         & produto ' qtd > 0
         & produto ' valor > 0
     THEN
-        produts := produts \/ { id_produto |-> produto }  //TODO: Colocar para poder adicionar mais itens ao produto já existente (reposição)
-        || produts_disponibilidade := produts_disponibilidade \/ {id_produto |-> produto'qtd}
+        IF id_produto /: dom ( produts ) THEN
+            produts := produts \/ { id_produto |-> produto }  
+            || produts_disponibilidade := produts_disponibilidade \/ {id_produto |-> produto'qtd}
+        ELSE 
+            produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) )'qtd + produto'qtd , valor : produto'valor ) }  
+            || produts_disponibilidade := produts_disponibilidade <+ {id_produto |-> (produts_disponibilidade(id_produto) + produto'qtd) }
+        END
     END
     ;
     remover_produto ( id_produto , qtd ) =
@@ -66,8 +70,8 @@ OPERATIONS
         & id_produto : dom ( produts )
         & qtd : NATURAL
         & qtd > 0
-        & produts_disponibilidade(id_produto) >= qtd
         & ( produts ( id_produto ) ) ' qtd >= qtd
+        & produts_disponibilidade(id_produto) >= qtd
     THEN
         produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) ) ' qtd - qtd , valor : ( produts ( id_produto ) ) ' valor ) }
         ||produts_disponibilidade := produts_disponibilidade <+ {id_produto |-> (produts_disponibilidade(id_produto) - qtd) }
