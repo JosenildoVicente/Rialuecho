@@ -15,7 +15,7 @@ ABSTRACT_VARIABLES
 INVARIANT
     carrinhos : POW ( num_carrinho )
     & produts : ids_produto +-> struct ( qtd : NAT , valor : NAT )//estoque total
-    & produts_disponibilidade: ids_produto --> NAT
+    & produts_disponibilidade: ids_produto +-> NAT
     & dom(produts_disponibilidade) = dom(produts)
     & ! pp . (pp : dom(produts) => produts_disponibilidade(pp) <= (produts(pp))'qtd)
     & produtos_por_carrinho : carrinhos +-> ( ids_produto +-> struct ( qtd : NAT) ) //valor está aqui desnecessáriamente - feito
@@ -41,7 +41,10 @@ OPERATIONS
         xx : num_carrinho
         & xx : carrinhos
     THEN
-        produtos_por_carrinho := { xx } <<| produtos_por_carrinho
+//        produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
+        
+        produts_disponibilidade := produts_disponibilidade <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd )}
+        ||produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx } //TODO: retornar os produtos da lista para o estoque (deixar disponivel)
     END
     ;
@@ -63,6 +66,7 @@ OPERATIONS
         & id_produto : dom ( produts )
         & qtd : NATURAL
         & qtd > 0
+        & produts_disponibilidade(id_produto) >= qtd
         & ( produts ( id_produto ) ) ' qtd >= qtd
     THEN
         produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) ) ' qtd - qtd , valor : ( produts ( id_produto ) ) ' valor ) }
@@ -78,11 +82,12 @@ OPERATIONS
         & xx : dom ( produtos_por_carrinho )
         & qtd : NAT
         & qtd > 0
-        & ( produts ( nome ) ) ' qtd >= qtd
+        & produts_disponibilidade(nome) >= qtd
     THEN
-        produts_disponibilidade := produts_disponibilidade <+ {nome |-> (produts_disponibilidade(nome)- qtd)}
-//        produts := produts <+ { nome |-> rec ( qtd : ( produts ( nome ) ) ' qtd - qtd , valor : ( produts ( nome ) ) ' valor ) }
-        || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) \/ { nome |-> rec ( qtd : qtd ) } ) } // TODO: Rever POs, colocar para poder colocar mais itens de um produto que já esteja no carrinho (já está podendo escolher essa opção mas ele não reescreve, só tenta adicionar um novo)
+        produts_disponibilidade := produts_disponibilidade <+ {nome |-> ((produts_disponibilidade(nome))- qtd)}
+        || IF nome: dom(produtos_por_carrinho(xx)) THEN produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) <+ { nome |-> rec ( qtd : (produtos_por_carrinho(xx)(nome))'qtd + qtd ) } ) }
+           ELSE produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) \/ { nome |-> rec ( qtd : qtd ) } ) } END
+               // TODO: Rever POs, colocar para poder colocar mais itens de um produto que já esteja no carrinho (já está podendo escolher essa opção mas ele não reescreve, só tenta adicionar um novo)
     END
     ;
     remover_produto_do_carrinho ( id_prod , xx ) =
@@ -106,9 +111,8 @@ OPERATIONS
         & xx : dom ( produtos_por_carrinho )
         & produtos_por_carrinho ( xx ) /= {}
     THEN
-//        produts := produts <+ (! id_prod . (id_prod: dom(produtos_por_carrinho(xx)) => (produts(id_prod))'qtd = (produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd))
-//        produts := produts <+ ! id_prods . ( id_prods = produtos_por_carrinho(xx)) 
-        produtos_por_carrinho := { xx } <<| produtos_por_carrinho
+        produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
+        || produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
     END
 //    ;
