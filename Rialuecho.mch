@@ -11,21 +11,23 @@ ABSTRACT_VARIABLES
     carrinhos ,
     produtos_por_carrinho ,
     produts,
-    produts_disponibilidade
+    produts_disponibilidade,
+    historico_compra
+    
 INVARIANT
     carrinhos : POW ( num_carrinho )
     & produts : ids_produto +-> struct ( qtd : NAT , valor : NAT )//estoque total
     & produts_disponibilidade: ids_produto +-> NAT
     & dom(produts_disponibilidade) = dom(produts)
     & ! pp . (pp : dom(produts) => produts_disponibilidade(pp) <= (produts(pp))'qtd)
-    & produtos_por_carrinho : carrinhos +-> ( ids_produto +-> struct ( qtd : NAT) ) //valor está aqui desnecessáriamente - feito
-//Colocar uma invariante para garantir que a quantidade do produto no estoque seja maior que a nos carrinhos
-//Fazer uma variável 'disponibilidade' em que será verificado a quantidade de itens disponíveis do produto, e mexer no estoque somente no ato da compra. - Feito
+    & produtos_por_carrinho : carrinhos +-> ( ids_produto +-> struct ( qtd : NAT) ) 
+    & historico_compra : seq(ids_produto +-> NAT) // INT -> natural
 INITIALISATION
     carrinhos := {}
     || produtos_por_carrinho := {}
     || produts := {}
     || produts_disponibilidade := {}
+    || historico_compra := []
 OPERATIONS
     adicionar_carrinho ( xx ) =
     PRE
@@ -115,7 +117,24 @@ OPERATIONS
         & xx : dom ( produtos_por_carrinho )
         & produtos_por_carrinho ( xx ) /= {}
     THEN
-        produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
+        ANY 
+            aa
+        WHERE
+            aa: perm( { compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & compra = {(id_prod |-> (produtos_por_carrinho(xx)(id_prod))'qtd )}) } )
+        THEN
+            historico_compra := historico_compra ^ aa
+        END
+
+//        historico_compra := historico_compra ^ (seq_correto | # cor . (cor : perm(produtos_por_carrinho(xx))))
+//        historico_compra := historico_compra ^ { compra | #ss .( ss : POW(1..card(produtos_por_carrinho(xx)) & compra = ss  |-> produtos_por_carrinho(xx))) }
+//        historico_compra := historico_compra ^ perm(produtos_por_carrinho(xx))
+// compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & compra = rec(id_prod: id_prod, qtd: (produtos_por_carrinho(xx)(id_prod))'qtd))
+//        historico_compra := historico_compra ^ { compra | # (id_prod, num) . (id_prod : dom(produtos_por_carrinho(xx)) & num: [1,2] & compra = ( size(historico_compra)) |-> rec(id_prod: id_prod, qtd: (produtos_por_carrinho(xx)(id_prod))'qtd)) }
+
+//        historico_compra := historico_compra ^ { compra | # (id_prod, num) . (id_prod : dom(produtos_por_carrinho(xx)) & num: 0..card(produtos_por_carrinho(xx)) & compra = num |-> {(id_prod |-> (produtos_por_carrinho(xx)(id_prod))'qtd )}) }
+
+        || produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
+
         || produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
     END
