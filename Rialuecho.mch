@@ -15,11 +15,11 @@ ABSTRACT_VARIABLES
     historico_compra
     
 INVARIANT
-    carrinhos : POW ( num_carrinho )
+    carrinhos : FIN ( num_carrinho )
     & produts : ids_produto +-> struct ( qtd : NAT , valor : NAT )//estoque total
     & produts_disponibilidade: ids_produto +-> NAT
     & dom(produts_disponibilidade) = dom(produts)
-    & ! pp . (pp : dom(produts) => produts_disponibilidade(pp) <= (produts(pp))'qtd)
+    & ! pp . (pp : dom(produts_disponibilidade) => produts_disponibilidade(pp) <= (produts(pp))'qtd)
     & produtos_por_carrinho : carrinhos +-> ( ids_produto +-> struct ( qtd : NAT) ) 
     & historico_compra : seq(struct(id_prod: ids_produto ,qtd : NAT , valor : NAT)) // INT -> natural
 INITIALISATION
@@ -46,9 +46,10 @@ OPERATIONS
     PRE
         xx : num_carrinho
         & xx : carrinhos
+        & xx : dom(produtos_por_carrinho)
+        & { prod | #(id_prod).(id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts_disponibilidade) & prod = id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod)) ' qtd) } : ids_produto +-> NAT
     THEN
-        
-        produts_disponibilidade := produts_disponibilidade <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd )}
+        produts_disponibilidade := produts_disponibilidade <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts_disponibilidade) & prod = id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd )}
         ||produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx } 
     END
@@ -61,12 +62,11 @@ OPERATIONS
         & id_produto : ids_produto
         & produto ' qtd > 0
         & produto ' valor > 0
-//        & {id_produto |-> produto ' qtd} : ids_produto +-> NAT
-//        & {id_produto |-> produts_disponibilidade(id_produto) + produto ' qtd} : ids_produto +-> NAT
-//        &{id_produto |-> rec(qtd : (produts(id_produto)) ' qtd + produto ' qtd,valor : produto ' valor)} : ids_produto +-> struct(qtd : NAT,valor : NAT)
-//        &  {id_produto |-> (produts_disponibilidade(id_produto) + produto'qtd) } : ids_produto +-> NAT
+        & {id_produto |-> produto ' qtd} : ids_produto +-> NAT
     THEN
-        IF id_produto /: dom ( produts ) & id_produto /: dom(produts_disponibilidade) THEN
+        IF 
+            id_produto /: dom ( produts )
+        THEN
             produts := produts \/ { id_produto |-> produto }  
             || produts_disponibilidade := produts_disponibilidade \/ {id_produto |-> produto'qtd}
         ELSE 
@@ -98,14 +98,21 @@ OPERATIONS
         nome : dom ( produts )
         & nome : ids_produto
         & xx : num_carrinho
+        & xx : carrinhos
         & xx : dom ( produtos_por_carrinho )
         & qtd : NAT
         & qtd > 0
         & produts_disponibilidade(nome) >= qtd
+        
     THEN
         produts_disponibilidade := produts_disponibilidade <+ {nome |-> ((produts_disponibilidade(nome))- qtd)}
-        || IF nome: dom(produtos_por_carrinho(xx)) THEN produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) <+ { nome |-> rec ( qtd : (produtos_por_carrinho(xx)(nome))'qtd + qtd ) } ) }
-           ELSE produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) \/ { nome |-> rec ( qtd : qtd ) } ) } END
+        || IF
+               nome: dom(produtos_por_carrinho(xx)) 
+           THEN 
+               produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) <+ { nome |-> rec ( qtd : (produtos_por_carrinho(xx)(nome))'qtd + qtd ) } ) }
+           ELSE 
+               produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) \/ { nome |-> rec ( qtd : qtd ) } ) } 
+           END
     END
     ;
     
@@ -119,11 +126,9 @@ OPERATIONS
         & ! pc . ( pc : dom ( produtos_por_carrinho ( xx ) ) => pc = id_prod )
         & id_prod : dom((produtos_por_carrinho(xx)))
         & {id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod)) ' qtd} : ids_produto +-> NAT
-        
-
+        & (produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd) <= (produts(id_prod))'qtd
     THEN
         produts_disponibilidade := produts_disponibilidade <+ {id_prod |-> (produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd)}
-
         || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - { id_prod |-> rec ( qtd : ( produtos_por_carrinho ( xx ) ( id_prod ) ) ' qtd ) } ) }
 
     END
@@ -136,17 +141,17 @@ OPERATIONS
         & xx : dom ( produtos_por_carrinho )
         & produtos_por_carrinho ( xx ) /= {}
         & historico_compra : seq(ran(historico_compra))
+        & { prod | #(id_prod).(id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & prod = id_prod |-> rec(qtd : (produts(id_prod)) ' qtd - (produtos_por_carrinho(xx)(id_prod)) ' qtd,valor : (produts(id_prod)) ' valor)) } : ids_produto +-> struct(qtd : NAT,valor : NAT)
     THEN
         ANY 
             aa
         WHERE
-
             aa : seq(struct(id_prod : ids_produto,qtd : NAT,valor : NAT))
+            & { compra | #(id_prod).(id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & compra = rec(id_prod : id_prod,qtd : (produtos_por_carrinho(xx)(id_prod)) ' qtd,valor : (produts(id_prod)) ' valor)) } : FIN({ compra | #(id_prod).(id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & compra = rec(id_prod : id_prod,qtd : (produtos_por_carrinho(xx)(id_prod)) ' qtd,valor : (produts(id_prod)) ' valor)) })
             & aa: perm( { compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & compra =  rec(id_prod: id_prod , qtd: (produtos_por_carrinho(xx)(id_prod))'qtd, valor: (produts(id_prod))'valor ) ) } )
         THEN
             historico_compra := historico_compra ^ aa
         END
-
         || produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
 
         || produtos_por_carrinho := { xx } <<| produtos_por_carrinho
@@ -154,7 +159,7 @@ OPERATIONS
     END
     ;
     
-    
+    //Relatorio que retorna o valor total arrecardado com as vendas
     rd <-- relatorio_dia = 
     BEGIN
         rd := SIGMA xx . (xx : ran(historico_compra) | xx'qtd * xx'valor * card(historico_compra |> {xx}))
