@@ -61,8 +61,12 @@ OPERATIONS
         & id_produto : ids_produto
         & produto ' qtd > 0
         & produto ' valor > 0
+//        & {id_produto |-> produto ' qtd} : ids_produto +-> NAT
+//        & {id_produto |-> produts_disponibilidade(id_produto) + produto ' qtd} : ids_produto +-> NAT
+//        &{id_produto |-> rec(qtd : (produts(id_produto)) ' qtd + produto ' qtd,valor : produto ' valor)} : ids_produto +-> struct(qtd : NAT,valor : NAT)
+//        &  {id_produto |-> (produts_disponibilidade(id_produto) + produto'qtd) } : ids_produto +-> NAT
     THEN
-        IF id_produto /: dom ( produts ) THEN
+        IF id_produto /: dom ( produts ) & id_produto /: dom(produts_disponibilidade) THEN
             produts := produts \/ { id_produto |-> produto }  
             || produts_disponibilidade := produts_disponibilidade \/ {id_produto |-> produto'qtd}
         ELSE 
@@ -81,6 +85,7 @@ OPERATIONS
         & qtd > 0
         & ( produts ( id_produto ) ) ' qtd >= qtd
         & produts_disponibilidade(id_produto) >= qtd
+        & {id_produto |-> rec(qtd : (produts(id_produto)) ' qtd - qtd,valor : (produts(id_produto)) ' valor)} : ids_produto +-> struct(qtd : NAT,valor : NAT)
     THEN
         produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) ) ' qtd - qtd , valor : ( produts ( id_produto ) ) ' valor ) }
         ||produts_disponibilidade := produts_disponibilidade <+ {id_produto |-> (produts_disponibilidade(id_produto) - qtd) }
@@ -112,6 +117,9 @@ OPERATIONS
         & xx : num_carrinho
         & xx : dom ( produtos_por_carrinho )
         & ! pc . ( pc : dom ( produtos_por_carrinho ( xx ) ) => pc = id_prod )
+        & id_prod : dom((produtos_por_carrinho(xx)))
+        & {id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod)) ' qtd} : ids_produto +-> NAT
+        
 
     THEN
         produts_disponibilidade := produts_disponibilidade <+ {id_prod |-> (produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd)}
@@ -127,16 +135,19 @@ OPERATIONS
         xx : num_carrinho
         & xx : dom ( produtos_por_carrinho )
         & produtos_por_carrinho ( xx ) /= {}
+        & historico_compra : seq(ran(historico_compra))
     THEN
         ANY 
             aa
         WHERE
-            aa: perm( { compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & compra =  rec(id_prod: id_prod , qtd: (produtos_por_carrinho(xx)(id_prod))'qtd, valor: (produts(id_prod))'valor ) ) } )
+
+            aa : seq(struct(id_prod : ids_produto,qtd : NAT,valor : NAT))
+            & aa: perm( { compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & compra =  rec(id_prod: id_prod , qtd: (produtos_por_carrinho(xx)(id_prod))'qtd, valor: (produts(id_prod))'valor ) ) } )
         THEN
             historico_compra := historico_compra ^ aa
         END
 
-        || produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
+        || produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & id_prod : dom(produts) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
 
         || produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
