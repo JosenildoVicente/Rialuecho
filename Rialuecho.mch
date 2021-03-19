@@ -21,7 +21,7 @@ INVARIANT
     & dom(produts_disponibilidade) = dom(produts)
     & ! pp . (pp : dom(produts) => produts_disponibilidade(pp) <= (produts(pp))'qtd)
     & produtos_por_carrinho : carrinhos +-> ( ids_produto +-> struct ( qtd : NAT) ) 
-    & historico_compra : seq(ids_produto +-> NAT) // INT -> natural
+    & historico_compra : seq(struct(id_prod: ids_produto ,qtd : NAT , valor : NAT)) // INT -> natural
 INITIALISATION
     carrinhos := {}
     || produtos_por_carrinho := {}
@@ -29,6 +29,8 @@ INITIALISATION
     || produts_disponibilidade := {}
     || historico_compra := []
 OPERATIONS
+    
+    //Operacao para adicionar um carrinho novo
     adicionar_carrinho ( xx ) =
     PRE
         xx : num_carrinho
@@ -38,18 +40,21 @@ OPERATIONS
         || produtos_por_carrinho := produtos_por_carrinho \/ { xx |-> {} }
     END
     ;
+    
+    //Operacao para apagar um carrinho
     dropar_carrinho ( xx ) =
     PRE
         xx : num_carrinho
         & xx : carrinhos
     THEN
-//        produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
         
         produts_disponibilidade := produts_disponibilidade <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd )}
         ||produtos_por_carrinho := { xx } <<| produtos_por_carrinho
-        || carrinhos := carrinhos - { xx } //TODO: retornar os produtos da lista para o estoque (deixar disponivel)
+        || carrinhos := carrinhos - { xx } 
     END
     ;
+    
+    //Operacao para adicionar um produto (ou atualizar) na no estoque
     adicionar_produto ( id_produto , produto ) =
     PRE
         produto : struct ( qtd : NAT , valor : NAT )
@@ -66,6 +71,8 @@ OPERATIONS
         END
     END
     ;
+    
+    //Operacao para remover uma quantidade especifica de um determinado produto do estoque
     remover_produto ( id_produto , qtd ) =
     PRE
         id_produto : ids_produto
@@ -80,6 +87,7 @@ OPERATIONS
     END
     ;
 
+    //Operacao para adicionar ao carrinho uma quantidade determinada de um produto especifico
     adicionar_produto_ao_carrinho ( nome , xx , qtd ) =
     PRE
         nome : dom ( produts )
@@ -93,9 +101,10 @@ OPERATIONS
         produts_disponibilidade := produts_disponibilidade <+ {nome |-> ((produts_disponibilidade(nome))- qtd)}
         || IF nome: dom(produtos_por_carrinho(xx)) THEN produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) <+ { nome |-> rec ( qtd : (produtos_por_carrinho(xx)(nome))'qtd + qtd ) } ) }
            ELSE produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( ( produtos_por_carrinho ( xx ) ) \/ { nome |-> rec ( qtd : qtd ) } ) } END
-               // TODO: Rever POs, colocar para poder colocar mais itens de um produto que já esteja no carrinho (já está podendo escolher essa opção mas ele não reescreve, só tenta adicionar um novo)
     END
     ;
+    
+    //Operacao para remover um produto especifico de um carrinho (remover todas quantidades)
     remover_produto_do_carrinho ( id_prod , xx ) =
     PRE
         id_prod : dom ( produts )
@@ -106,12 +115,14 @@ OPERATIONS
 
     THEN
         produts_disponibilidade := produts_disponibilidade <+ {id_prod |-> (produts_disponibilidade(id_prod) + (produtos_por_carrinho(xx)(id_prod))'qtd)}
-//        produts := produts <+ { id_prod |-> rec ( qtd : ( produts ( id_prod ) ) ' qtd + ( produtos_por_carrinho ( xx ) ( id_prod ) ) ' qtd , valor : ( produts ( id_prod ) ) ' valor ) }
+
         || produtos_por_carrinho := produtos_por_carrinho <+ { xx |-> ( produtos_por_carrinho ( xx ) - { id_prod |-> rec ( qtd : ( produtos_por_carrinho ( xx ) ( id_prod ) ) ' qtd ) } ) }
 
     END
     ;
-    comprar ( xx ) = // TODO: diminuir a quantidade dos produtos que é comprado, calcular valor total da compra, colocar esse valor em algo...
+    
+    //Operacao de finalizacao da compra
+    comprar ( xx ) = // TODO: calcular valor total da compra, colocar esse valor em algo...
     PRE
         xx : num_carrinho
         & xx : dom ( produtos_por_carrinho )
@@ -120,35 +131,23 @@ OPERATIONS
         ANY 
             aa
         WHERE
-            aa: perm( { compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & compra = {(id_prod |-> (produtos_por_carrinho(xx)(id_prod))'qtd )}) } )
+            aa: perm( { compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & compra =  rec(id_prod: id_prod , qtd: (produtos_por_carrinho(xx)(id_prod))'qtd, valor: (produts(id_prod))'valor ) ) } )
         THEN
             historico_compra := historico_compra ^ aa
         END
-
-//        historico_compra := historico_compra ^ (seq_correto | # cor . (cor : perm(produtos_por_carrinho(xx))))
-//        historico_compra := historico_compra ^ { compra | #ss .( ss : POW(1..card(produtos_por_carrinho(xx)) & compra = ss  |-> produtos_por_carrinho(xx))) }
-//        historico_compra := historico_compra ^ perm(produtos_por_carrinho(xx))
-// compra | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & compra = rec(id_prod: id_prod, qtd: (produtos_por_carrinho(xx)(id_prod))'qtd))
-//        historico_compra := historico_compra ^ { compra | # (id_prod, num) . (id_prod : dom(produtos_por_carrinho(xx)) & num: [1,2] & compra = ( size(historico_compra)) |-> rec(id_prod: id_prod, qtd: (produtos_por_carrinho(xx)(id_prod))'qtd)) }
-
-//        historico_compra := historico_compra ^ { compra | # (id_prod, num) . (id_prod : dom(produtos_por_carrinho(xx)) & num: 0..card(produtos_por_carrinho(xx)) & compra = num |-> {(id_prod |-> (produtos_por_carrinho(xx)(id_prod))'qtd )}) }
 
         || produts := produts <+ { prod | # id_prod . (id_prod : dom(produtos_por_carrinho(xx)) & prod = id_prod |-> rec(qtd: ((produts(id_prod))'qtd - (produtos_por_carrinho(xx)(id_prod))'qtd), valor: (produts(id_prod))'valor)) }
 
         || produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
     END
-//    ;
-//    finalizar_compra ( xx ) =
-//    PRE
-//        xx : num_carrinho
-//        & xx : carrinhos
-//        & lista_produtos ( xx ) /= {}
-//        & estados_da_compra /= {} // Essa condicao esta errada
-//    THEN
-//        lista_produtos := { xx } <<| lista_produtos
-//        || carrinhos := carrinhos - { xx }
-//    END
-
-
+    ;
+    
+    
+    rd <-- relatorio_dia = 
+    BEGIN
+        rd := SIGMA xx . (xx : ran(historico_compra) | xx'qtd * xx'valor)
+    END
+    
+    
 END
