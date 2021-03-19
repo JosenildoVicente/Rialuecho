@@ -146,7 +146,7 @@ OPERATIONS
     
     rd <-- relatorio_dia = 
     BEGIN
-        rd := SIGMA xx . (xx : ran(historico_compra) | xx'qtd * xx'valor)
+        rd := SIGMA xx . (xx : ran(historico_compra) | xx'qtd * xx'valor * card(historico_compra |> {xx}))
     END
     
     
