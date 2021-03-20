@@ -5,8 +5,7 @@
 MACHINE
     Rialuecho
 SEES
-    Rialuecho_ctx ,
-    Compra_ctx
+    Rialuecho_ctx 
 ABSTRACT_VARIABLES
     carrinhos ,
     produtos_por_carrinho ,

@@ -1,4 +1,4 @@
-﻿/* Rialuecho_ctx
+/* Rialuecho_ctx
  * Authors: Arthur Pires, Josenildo Vicente, Renato Joaquim
  * Creation date: 07/03/2021
  */
