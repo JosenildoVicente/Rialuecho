@@ -9,13 +9,67 @@
 <Pos l='8' c='5' s='12'/>
 </Attr>
 </Id>
+<Enumerated_Values>
+<Id value='num_carrinho0' typref='1676006241'>
+<Attr>
+<Pos l='9' c='9' s='13'/>
+</Attr>
+</Id>
+<Id value='num_carrinho1' typref='1676006241'>
+<Attr>
+<Pos l='10' c='9' s='13'/>
+</Attr>
+</Id>
+<Id value='num_carrinho2' typref='1676006241'>
+<Attr>
+<Pos l='11' c='9' s='13'/>
+</Attr>
+</Id>
+<Id value='num_carrinho3' typref='1676006241'>
+<Attr>
+<Pos l='12' c='9' s='13'/>
+</Attr>
+</Id>
+<Id value='num_carrinho4' typref='1676006241'>
+<Attr>
+<Pos l='13' c='9' s='13'/>
+</Attr>
+</Id>
+</Enumerated_Values>
 </Set>
 <Set>
 <Id value='ids_produto' typref='1212424141'>
 <Attr>
-<Pos l='9' c='5' s='11'/>
+<Pos l='15' c='5' s='11'/>
 </Attr>
 </Id>
+<Enumerated_Values>
+<Id value='ids_produto0' typref='3369109046'>
+<Attr>
+<Pos l='16' c='9' s='12'/>
+</Attr>
+</Id>
+<Id value='ids_produto1' typref='3369109046'>
+<Attr>
+<Pos l='17' c='9' s='12'/>
+</Attr>
+</Id>
+<Id value='ids_produto2' typref='3369109046'>
+<Attr>
+<Pos l='18' c='9' s='12'/>
+</Attr>
+</Id>
+<Id value='ids_produto3' typref='3369109046'>
+<Attr>
+<Pos l='19' c='9' s='12'/>
+</Attr>
+</Id>
+<Id value='ids_produto4' typref='3369109046'>
+<Attr>
+<Pos l='20' c='9' s='12'/>
+</Attr>
+</Id>
+</Enumerated_Values>
 </Set>
 </Sets>
 <Initialisation>
@@ -27,10 +81,16 @@
 <Id value='num_carrinho'/>
 </Unary_Exp>
 </Type>
+<Type id='1676006241'>
+<Id value='num_carrinho'/>
+</Type>
 <Type id='1212424141'>
 <Unary_Exp op='POW'>
 <Id value='ids_produto'/>
 </Unary_Exp>
+</Type>
+<Type id='3369109046'>
+<Id value='ids_produto'/>
 </Type>
 </TypeInfos>
 

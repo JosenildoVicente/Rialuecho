@@ -1,9 +1,0 @@
-digraph state {
- graph [fontsize=12]
-rankdir=TB;
-"ROOT-NODE" -> "ROOT-NODE" [label = "produtos", color = "firebrick"];
-"ROOT-NODE" -> "ROOT-NODE" [label = "carrinhos", color = "sienna"];
-"ROOT-NODE" [color = "lightblue", style = "filled, solid", shape = "diamond"]
-subgraph "cluster_num_carrinho" {node [style=filled,color=white]; label="num_carrinho"; style=filled;color=lightgrey; }
-subgraph "cluster_produto" {node [style=filled,color=white]; label="produto"; style=filled;color=lightgrey; }
-}

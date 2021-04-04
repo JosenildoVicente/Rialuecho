@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<db_xml>
+    <atelierb version="3_7_ubuntu-cvs" />
+    <project decomp_dir="C:\Users\josen\Desktop\exerciciosB\Rialuecho_final\bdp\expand_src" old_decomp_dir="C:\Users\josen\Desktop\exerciciosB\Rialuecho_final\bdp\src">
+        <!-- Definition directory list -->
+        <definition_dir path="C:\Users\josen\Desktop\exerciciosB\Rialuecho_motion\bdp\src" />
+        <!-- Component file list -->
+        <component_file path="C:\Users\josen\Desktop\exerciciosB\Rialuecho_motion\bdp\src" name="Rialuecho" suffix="mch" user="josen">
+            <component name="Rialuecho" type="specification" />
+        </component_file>
+        <component_file path="C:\Users\josen\Desktop\exerciciosB\Rialuecho_motion\bdp\src" name="Rialuecho_ctx" suffix="mch" user="josen">
+            <component name="Rialuecho_ctx" type="specification" />
+        </component_file>
+    </project>
+</db_xml>

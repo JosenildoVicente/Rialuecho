@@ -3,9 +3,11 @@ END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-num_carrinho: FIN(INTEGER) & not(num_carrinho = {}) & ids_produto: FIN(INTEGER) & not(ids_produto = {});
-num_carrinho: FIN(INTEGER) & not(num_carrinho = {})
+((1..5)*{num_carrinho}): FIN(NATURAL*{num_carrinho}) & not(((1..5)*{num_carrinho}) = {}) & ((1..5)*{ids_produto}): FIN(NATURAL*{ids_produto}) & not(((1..5)*{ids_produto}) = {});
+((1..5)*{num_carrinho}): FIN(NATURAL*{num_carrinho}) & not(((1..5)*{num_carrinho}) = {})
 END
 &
-THEORY EnumerateX
+THEORY EnumerateX IS
+ids_produto == {ids_produto0,ids_produto1,ids_produto2,ids_produto3,ids_produto4};
+num_carrinho == {num_carrinho0,num_carrinho1,num_carrinho2,num_carrinho3,num_carrinho4}
 END

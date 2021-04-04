@@ -1,0 +1,10 @@
+{
+    "id": "rialuechoTeste1",
+    "template": "index.html",
+    "model": "bdp\\src\\Rialuecho.mch",
+    "observers": "rialuechoTeste1.observers.json",
+    "events": "rialuechoTeste1.events.json",
+    "autoOpen": [
+        "Events"
+    ]
+}

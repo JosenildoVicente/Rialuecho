@@ -1,0 +1,77 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g>
+  <title>background</title>
+  <rect fill="#b52020" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <defs>
+  <filter id="svg_36_blur" x="-50%" y="-50%" width="200%" height="200%">
+   <feGaussianBlur stdDeviation="0.2"/>
+  </filter>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g data-bms-widget="ibutton" data-text="Adicionar Carrinho" id="button_adicionar_carrinho">
+   <rect id="svg_1" x="300" y="50" width="138" height="25" fill="#ededed" stroke="black"/>
+   <text id="svg_2" x="310" y="68" fill="black">Adicionar Carrinho</text>
+  </g>
+  <g id="button_adicionar_produto" data-text="Adicionar Produto" data-bms-widget="ibutton">
+   <rect stroke="black" fill="#ededed" height="25" width="130" y="50" x="90" id="svg_3"/>
+   <text fill="black" y="68" x="100" id="svg_4">Adicionar Produto</text>
+  </g>
+  <g id="button_produto_carrinho" data-text="Adicionar produto ao carrinho" data-bms-widget="ibutton">
+   <rect stroke="black" fill="#ededed" height="25" width="210" y="50" x="500" id="svg_5"/>
+   <text fill="black" y="68" x="510" id="svg_6">Adicionar produto ao carrinho</text>
+  </g>&gt;
+  <g id="button_remover_carrinho" data-text="Remover Carrinho" data-bms-widget="ibutton">
+   <rect stroke="black" fill="#ededed" height="25" width="134" y="100" x="300" id="svg_9"/>
+   <text fill="black" y="118" x="310" id="svg_10">Remover Carrinho</text>
+  </g>
+  <g id="button_remover_produto" data-text="Remover Produto" data-bms-widget="ibutton">
+   <rect stroke="black" fill="#ededed" height="25" width="129" y="100" x="90" id="svg_15"/>
+   <text fill="black" y="118" x="100" id="svg_16">Remover Produto</text>
+  </g>
+  <g id="button_compra" data-text="Comprar" data-bms-widget="ibutton">
+   <rect stroke="black" fill="#ededed" height="25" width="100" y="500" x="600" id="svg_19"/>
+   <text fill="black" y="518" x="623" id="svg_20">Comprar</text>
+  </g>
+  <g id="button_produto_carrinho_remover" data-text="Remover produto ao carrinho" data-bms-widget="ibutton">
+   <rect stroke="black" fill="#ededed" height="25" width="210" y="100" x="500" id="svg_22"/>
+   <text fill="black" y="118" x="513" id="svg_23">Remover produto ao carrinho</text>
+  </g>
+  <g data-bms-widget="ibutton" data-text="Gerar relatório" id="button_texto_relatorio">
+   <rect id="svg_24" x="50" y="500" width="200" height="25" fill="#ededed" stroke="black"/>
+   <text id="svg_25" x="67" y="518" fill="black">Gerar relatório</text>
+  </g>
+  <image x="10" y="150" width="300" height="300" id="estante" xlink:href="imagens/estante.svg"/>
+  <image x="80" y="215" width="50" height="50" id="produto_2" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="30" y="215" width="50" height="50" id="produto_1" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="130" y="215" width="50" height="50" id="produto_3" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="180" y="215" width="50" height="50" id="produto_4" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="230" y="215" width="50" height="50" id="produto_5" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="80" y="265" width="50" height="50" id="produto_7" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="30" y="265" width="50" height="50" id="produto_6" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="130" y="265" width="50" height="50" id="produto_8" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="180" y="265" width="50" height="50" id="produto_9" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="230" y="265" width="50" height="50" id="produto_10" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="80" y="315" width="50" height="50" id="produto_12" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="30" y="315" width="50" height="50" id="produto_11" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="130" y="315" width="50" height="50" id="produto_13" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="180" y="315" width="50" height="50" id="produto_14" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="230" y="315" width="50" height="50" id="produto_15" xlink:href="imagens/camisa.svg" class="produtos_camisa"/>
+  <image x="425" y="175" width="300" height="300" id="imagem_carrinho" xlink:href="imagens/carrinho.svg"/>
+  <image x="525" y="221" width="50" height="50" id="produto_carrinho_2" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="475" y="221" width="50" height="50" id="produto_carrinho_1" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="575" y="221" width="50" height="50" id="produto_carrinho_3" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="625" y="221" width="50" height="50" id="produto_carrinho_4" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="675" y="221" width="50" height="50" id="produto_carrinho_5" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="525" y="271" width="50" height="50" id="produto_carrinho_7" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="475" y="271" width="50" height="50" id="produto_carrinho_6" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="575" y="271" width="50" height="50" id="produto_carrinho_8" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="625" y="271" width="50" height="50" id="produto_carrinho_9" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="675" y="271" width="50" height="50" id="produto_carrinho_10" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="525" y="321" width="50" height="50" id="produto_carrinho_12" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="475" y="321" width="50" height="50" id="produto_carrinho_11" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="625" y="321" width="50" height="50" id="produto_carrinho_14" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/>
+  <image x="575" y="321" width="50" height="50" id="produto_carrinho_13" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho"/>
+  <image x="675" y="321" width="50" height="50" id="produto_carrinho_15" xlink:href="imagens/camisa.svg" class="produtos_camisa_carrinho" filter="url(#svg_36_blur)"/></g>
+</svg>
