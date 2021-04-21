@@ -58,22 +58,23 @@ OPERATIONS
     ;
 
     //Operacao para adicionar um produto (ou atualizar) na no estoque
-    adicionar_produto ( id_produto , produto ) =
+    adicionar_produto ( id_produto , qtd , valor ) =
     PRE
-        produto : struct ( qtd : NAT , valor : NAT )
-        & id_produto : ids_produto
-        & produto ' qtd > 0
-        & produto ' valor > 0
-        & { id_produto |-> produto ' qtd } : ids_produto +-> NAT
+        id_produto : ids_produto
+        & qtd : NAT
+        & valor : NAT
+        & qtd > 0
+        & valor > 0
+        & { id_produto |-> qtd } : ids_produto +-> NAT
     THEN
         IF
             id_produto /: dom ( produts )
         THEN
-            produts := produts \/ { id_produto |-> produto }
-            || produts_disponibilidade := produts_disponibilidade \/ { id_produto |-> produto ' qtd }
+            produts := produts \/ { id_produto |-> rec ( qtd : qtd , valor : valor ) }
+            || produts_disponibilidade := produts_disponibilidade \/ { id_produto |-> qtd }
         ELSE
-            produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) ) ' qtd + produto ' qtd , valor : produto ' valor ) }
-            || produts_disponibilidade := produts_disponibilidade <+ { id_produto |-> ( produts_disponibilidade ( id_produto ) + produto ' qtd ) }
+            produts := produts <+ { id_produto |-> rec ( qtd : ( produts ( id_produto ) ) ' qtd + qtd , valor : valor ) }
+            || produts_disponibilidade := produts_disponibilidade <+ { id_produto |-> ( produts_disponibilidade ( id_produto ) + qtd ) }
         END
     END
     ;
@@ -82,8 +83,8 @@ OPERATIONS
     remover_produto ( id_produto , qtd ) =
     PRE
         id_produto : ids_produto
-        & id_produto : dom ( produts )
-        & qtd : NATURAL
+//        & id_produto : dom ( produts )
+        & qtd : NAT
         & qtd > 0
         & ( produts ( id_produto ) ) ' qtd >= qtd
         & produts_disponibilidade ( id_produto ) >= qtd
@@ -97,8 +98,8 @@ OPERATIONS
     //Operacao para adicionar ao carrinho uma quantidade determinada de um produto especifico
     adicionar_produto_ao_carrinho ( nome , xx , qtd ) =
     PRE
-        nome : dom ( produts )
-        & nome : ids_produto
+//        nome : dom ( produts )
+        nome : ids_produto
         & xx : num_carrinho
         & xx : carrinhos
         & xx : dom ( produtos_por_carrinho )
@@ -121,8 +122,8 @@ OPERATIONS
     //Operacao para remover um produto especifico de um carrinho (remover todas quantidades)
     remover_produto_do_carrinho ( id_prod , xx ) =
     PRE
-        id_prod : dom ( produts )
-        & id_prod : ids_produto
+//        id_prod : dom ( produts )
+        id_prod : ids_produto
         & xx : num_carrinho
         & xx : dom ( produtos_por_carrinho )
         & ! pc . ( pc : dom ( produtos_por_carrinho ( xx ) ) => pc = id_prod )
@@ -159,14 +160,13 @@ OPERATIONS
         || produtos_por_carrinho := { xx } <<| produtos_por_carrinho
         || carrinhos := carrinhos - { xx }
     END
-    ;
-
-    //Relatorio que retorna o valor total arrecardado com as vendas
-    rd <-- relatorio_dia =
-    BEGIN
-        lucro_dia := { SIGMA xx . ( xx : ran ( historico_compra ) | xx ' qtd * xx ' valor * card ( historico_compra |> { xx } ) ) }
-        || rd := lucro_dia
-    END
+//    ;
+//    //Relatorio que retorna o valor total arrecardado com as vendas
+//    rd <-- relatorio_dia =
+//    BEGIN
+//        lucro_dia := { SIGMA xx . ( xx : ran ( historico_compra ) | xx ' qtd * xx ' valor * card ( historico_compra |> { xx } ) ) }
+//        || rd := lucro_dia
+//    END
 
 
 END
