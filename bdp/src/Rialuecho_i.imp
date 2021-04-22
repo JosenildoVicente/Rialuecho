@@ -12,29 +12,42 @@ SEES
 CONCRETE_VARIABLES
     carrinhos_i ,
     produtos_qtd_i ,
-    produtos_valor_i
-//    produtos_por_carrinho_i
+    produtos_valor_i ,
+    produtos_por_carrinho_i ,
+    ids_produto_i ,
+    valor_total_compras_i
 
 INVARIANT
     carrinhos_i : num_carrinho --> BOOL
     & produtos_qtd_i : ids_produto --> NAT
     & produtos_valor_i : ids_produto --> NAT
-//    & produtos_por_carrinho_i : num_carrinho --> struct(prod: ids_produto, qtd: NAT)
+    & produtos_por_carrinho_i : num_carrinho --> ( ids_produto --> NAT )
+    & ids_produto_i : NAT --> ids_produto
+    & valor_total_compras_i : NAT
+
 
 INITIALISATION
     carrinhos_i := num_carrinho * { FALSE } ;
     produtos_qtd_i := ids_produto * { 0 } ;
-    produtos_valor_i := ids_produto * { 0 }
-//    produtos_por_carrinho_i := num_carrinho * {rec(prod:ids_produto0, qtd:0), rec(prod:ids_produto1, qtd:0), rec(prod:ids_produto2, qtd:0), rec(prod:ids_produto3, qtd:0), rec(prod:ids_produto4, qtd:0)}
+    produtos_valor_i := ids_produto * { 0 } ;
+    produtos_por_carrinho_i := num_carrinho  *  { ( ids_produto * { 0 } ) } ;
+
+    ids_produto_i ( 0 ) := ids_produto0 ;
+    ids_produto_i ( 1 ) := ids_produto1 ;
+    ids_produto_i ( 2 ) := ids_produto2 ;
+    ids_produto_i ( 3 ) := ids_produto3 ;
+    ids_produto_i ( 4 ) := ids_produto4 ;
+
+    valor_total_compras_i := 0
 
 OPERATIONS
-    adicionar_carrinho ( xx ) =
+    adicionar_carrinho ( carrinho ) =
     BEGIN
         VAR ee IN
-                    ee := carrinhos_i ( xx ) ;
+                    ee := carrinhos_i ( carrinho ) ;
 
                     IF ee = FALSE
-                    THEN carrinhos_i ( xx ) := TRUE
+                    THEN carrinhos_i ( carrinho ) := TRUE
                     END
             END
     END
@@ -42,23 +55,33 @@ OPERATIONS
 
 
     //Operacao para apagar um carrinho
-    dropar_carrinho ( xx ) =
+    dropar_carrinho ( carrinho ) =
     BEGIN
         VAR ee IN
-                    ee := carrinhos_i ( xx ) ;
+                    ee := carrinhos_i ( carrinho ) ;
 
                     IF ee = TRUE
-                    THEN carrinhos_i ( xx ) := FALSE
+                    THEN carrinhos_i ( carrinho ) := FALSE
                     END
+            END ;
+
+        VAR ii IN
+            ii := 0 ;
+
+            WHILE ii < 5
+            DO
+                produtos_qtd_i ( ids_produto_i ( ii ) ) := produtos_qtd_i ( ids_produto_i ( ii ) ) + produtos_por_carrinho_i ( carrinho ) ( ids_produto_i ( ii ) ) ;
+                produtos_por_carrinho_i ( carrinho ) ( ids_produto_i ( ii ) ) := 0 ;
+                ii := ii + 1
+            INVARIANT
+                ii : NAT
+                & carrinho : dom ( produtos_por_carrinho_i )
+            VARIANT
+                ii
             END
-//        IF carrinhos_i(xx) = TRUE
-//        THEN
-//            
-//            //Falta colocar em produtos o que tem no carrinho
-//            
-////            produtos_por_carrinho_i(xx) := {rec(prod:ids_produto0, qtd:0), rec(prod:ids_produto1, qtd:0), rec(prod:ids_produto2, qtd:0), rec(prod:ids_produto3, qtd:0), rec(prod:ids_produto4, qtd:0)};
-//            carrinhos_i(xx) := FALSE
-//        END
+
+        END
+
     END
     ;
 
@@ -81,35 +104,64 @@ OPERATIONS
 
 
     //Operacao para adicionar ao carrinho uma quantidade determinada de um produto especifico
-    adicionar_produto_ao_carrinho ( nome , xx , qtd ) =
+    adicionar_produto_ao_carrinho ( id_produto , carrinho , qtd ) =
     BEGIN
-        skip
+        VAR ii IN
+            ii := produtos_qtd_i ( id_produto ) ;
+            IF ii >= qtd
+            THEN
+                produtos_qtd_i ( id_produto ) := ii - qtd ;
+                produtos_por_carrinho_i ( carrinho ) ( id_produto ) := ( produtos_por_carrinho_i ( carrinho ) ( id_produto ) ) + qtd
+            END
+        END
     END
     ;
 
 
     //Operacao para remover um produto especifico de um carrinho (remover todas quantidades)
-    remover_produto_do_carrinho ( id_prod , xx ) =
+    remover_produto_do_carrinho ( id_produto , carrinho ) =
     BEGIN
-        skip
+        VAR ii IN
+            ii := produtos_por_carrinho_i ( carrinho ) ( id_produto ) ;
+
+            produtos_qtd_i ( id_produto ) := produtos_qtd_i ( id_produto ) + ii ;
+            produtos_por_carrinho_i ( carrinho ) ( id_produto ) := 0
+        END
     END
     ;
 
 
     //Operacao de finalizacao da compra
-    comprar ( xx ) =
+    comprar ( carrinho ) =
     BEGIN
 
-        skip
+        VAR ii IN
+            ii := 0 ;
+
+            WHILE ii < 5
+            DO
+
+                valor_total_compras_i := valor_total_compras_i + ( produtos_por_carrinho_i ( carrinho ) ( ids_produto_i ( ii ) ) * produtos_valor_i ( ids_produto_i ( ii ) ) ) ;
+
+                produtos_por_carrinho_i ( carrinho ) ( ids_produto_i ( ii ) ) := 0 ;
+                carrinhos_i ( carrinho ) := FALSE ;
+
+                ii := ii + 1
+            INVARIANT
+                ii : NAT
+            VARIANT
+                ii
+            END
+
+        END
+
     END
-//    ;
-//    //o que retorna o valor total arrecardado com as vendas
-//    rd <-- relatorio_dia =
-//    BEGIN
-////        lucro_dia := { SIGMA xx . ( xx : ran ( historico_compra ) | xx ' qtd * xx ' valor * card ( historico_compra |> { xx } ) ) };
-////        rd := lucro_dia
-//        rd := {}
-//    END
+    ;
+    //o que retorna o valor total arrecardado com as vendas
+    rd <-- relatorio_dia =
+    BEGIN
+        rd := valor_total_compras_i
+    END
 
 
 END
